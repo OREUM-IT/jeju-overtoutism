@@ -20,13 +20,18 @@
 
 - 확인한 것: 국가법령정보 공동활용 사이트의 API 안내 목록에 현행 법령(조·항·호 단위), 자치법규, 행정규칙, 법령해석례, 조문별 변경 이력 조회 항목이 있다(2026-11-22, 목록 페이지 관측. 실제 API 호출은 하지 않았다).
 - 확인하지 않은 것: API 이용 신청 절차, 제주 관련 법령·조례의 실제 수집 가능 범위, 아래 문서에 적은 정책 후보의 현행 여부.
-- 구현: 없음. 다음 작업은 [로드맵](docs/03-roadmap-and-evaluation.md)의 0단계(수집 대상 법령 목록 확정)다.
+- 0단계 일부 완료(2026-11-22): 시범 지역 우도의 [수집 대상 목록](data/udo-regulation-sources.csv)을 만들었다. 법령 18건(법률 17, 시행령 1)과 조례 17건의 명칭·시행일 표기를 법령정보센터에서 관측했고, 제주특별법의 해당 조문과 우도 운행제한 공고문(제2026-715호)을 읽었다. 이 공고의 제한기간은 2026-07-31까지이며, 그 이후의 연장 공고는 보도만 있고 원문을 찾지 못했다. [결과와 한계](docs/04-stage0-udo-source-list.md)
+- 규제 카드 시범 2건(2026-11-22): 위 공고문에서 [운행제한 카드](data/cards/udo-vehicle-restriction-2026-715.json)를, 제주특별법 제355조 등과 「보전지역 관리에 관한 조례」에서 [절대보전지역 카드](data/cards/jeju-absolute-conservation-area.json)를 뽑고, 인용문 105개(33개, 72개)가 원문에 있는지 [검사 스크립트](scripts/check_card_quotes.py)로 확인했다. 두 카드는 모델 추출·미검수(`extracted`)다. [결과와 설계 변경](docs/05-pilot-regulation-card.md)
+- 구현: 인용문 검사 스크립트 1개뿐이다. 수집기·검색·Agent는 없다. 다음 작업은 2026-08-01 이후 연장 공고 확보와 법령정보 API 이용 신청이다. [필요한 키와 데이터](docs/06-api-keys-and-data-needs.md)
 
 ## 문서 읽는 순서
 
 1. [제품 목표와 범위](docs/01-product-and-scope.md)
 2. [규제 컴플라이언스 베이스 구축 계획](docs/02-regulation-compliance-base.md)
 3. [단계별 로드맵과 평가](docs/03-roadmap-and-evaluation.md)
+4. [0단계 결과: 우도 수집 대상 법령 목록](docs/04-stage0-udo-source-list.md)
+5. [규제 카드 시범 2건: 우도 차량 운행제한, 절대보전지역](docs/05-pilot-regulation-card.md)
+6. [필요한 API 키와 추가 수집 데이터](docs/06-api-keys-and-data-needs.md)
 
 ## 기록 원칙
 
