@@ -1,0 +1,175 @@
+{
+  "schema_version": "0.1-draft",
+  "status": "proposal",
+  "updated": "2026-11-23",
+  "theme": {
+    "id": "eco",
+    "name": "에코투어리즘",
+    "one_line": "규칙을 알고, 자연을 덜 건드리며 다니는 제주 여행",
+    "principles": [
+      "모든 아이템은 어떤 규제를 확인했는지를 함께 보여 준다.",
+      "판정에 저촉이 있는 아이템은 테마에 넣지 않는다.",
+      "확인하지 못한 것은 '확인 필요'로 적고 숨기지 않는다."
+    ]
+  },
+  "subthemes": [
+    { "id": "slow-move", "name": "느린 이동", "summary": "전기 이동수단, 자전거, 걷기로 섬과 마을을 다닌다" },
+    { "id": "oreum-forest", "name": "오름과 숲", "summary": "쉬는 오름을 피하고, 취사·야영 없이 걷는다" },
+    { "id": "coast-sea", "name": "바다와 해안", "summary": "해안과 바다의 보호 규칙을 알고 다닌다" },
+    { "id": "protected-land", "name": "보전지역 곁에서", "summary": "시설을 짓지 않는 조사·해설 활동" },
+    { "id": "stay-village", "name": "머무는 여행", "summary": "당일치기 대신 하루 머물며 마을을 본다" }
+  ],
+  "verdict_values": ["저촉", "허가 대상", "반입 허용", "제한 대상 아님", "해당 행위 없음", "확인 필요"],
+  "items": [
+    {
+      "id": "udo-low-carbon-pass", "name": "우도 저탄소 입도", "subtheme": "slow-move", "region": "우도",
+      "summary": "본섬에서 전기 렌터카로 들어가거나 도항선에 걸어 타고, 섬 안에서는 자전거로 다닌다",
+      "regulation_checks": [
+        { "card_id": "udo-vehicle-restriction-2026-715", "item_id": "R1-다", "verdict": "제한 대상 아님",
+          "note": "제1종 저공해자동차인 대여자동차는 제한에서 빠진다" },
+        { "card_id": "udo-vehicle-restriction-2026-715", "item_id": "R2-나", "verdict": "제한 대상 아님",
+          "note": "자전거로 분류되는 이동수단은 제한에서 빠진다" }
+      ],
+      "source_refs": ["N07"],
+      "criteria": {
+        "C2": { "met": true, "how": "전기 렌터카, 도항선, 자전거", "evidence": "card" },
+        "C3": { "met": true, "how": "시설을 새로 짓지 않는다", "evidence": "operator" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "open_points": ["2026-08-01 이후의 운행제한 공고를 확인하지 못했다"]
+    },
+    {
+      "id": "udo-accessible-trip", "name": "교통약자와 함께 가는 우도", "subtheme": "slow-move", "region": "우도",
+      "summary": "65세 이상, 영유아 동반 가족 등이 렌터카 반입 조건과 증빙을 미리 준비해 간다",
+      "regulation_checks": [
+        { "card_id": "udo-vehicle-restriction-2026-715", "item_id": "P1", "verdict": "반입 허용",
+          "note": "교통약자 이용 대여자동차. 증빙이 필요하다" }
+      ],
+      "source_refs": ["N07"],
+      "criteria": {
+        "C2": { "met": false, "how": "렌터카를 쓴다", "evidence": "card" },
+        "C3": { "met": true, "how": "시설을 새로 짓지 않는다", "evidence": "operator" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "open_points": ["2026-08-01 이후의 운행제한 공고를 확인하지 못했다"]
+    },
+    {
+      "id": "udo-one-night-stay", "name": "우도 하루 머물기", "subtheme": "stay-village", "region": "우도",
+      "summary": "우도 숙박시설에 묵으며 해 진 뒤와 이른 아침의 섬을 본다",
+      "regulation_checks": [
+        { "card_id": "udo-vehicle-restriction-2026-715", "item_id": "P3", "verdict": "반입 허용",
+          "note": "우도면 내 숙박시설을 이용하는 입도객의 대여자동차. 증빙이 필요하다" }
+      ],
+      "source_refs": ["N07"],
+      "criteria": {
+        "C2": { "met": false, "how": "렌터카 반입을 전제로 한다. 걸어 들어가면 채운다", "evidence": "operator" },
+        "C3": { "met": true, "how": "기존 숙박시설을 쓴다", "evidence": "operator" },
+        "C4": { "met": true, "how": "우도의 숙박시설과 식당을 이용한다", "evidence": "operator" }
+      },
+      "open_points": ["2026-08-01 이후의 운행제한 공고를 확인하지 못했다", "당일 방문을 나누는 효과는 부하 지표가 있어야 말할 수 있다"]
+    },
+    {
+      "id": "udo-rhodolith-walk", "name": "홍조단괴 해빈 해설 걷기", "subtheme": "coast-sea", "region": "우도",
+      "summary": "시설 없이 해설사와 해빈을 걸으며 홍조단괴와 해빈 유실 문제를 듣는다",
+      "regulation_checks": [
+        { "card_id": "jeju-absolute-conservation-area", "item_id": "R1", "verdict": "확인 필요",
+          "note": "시설을 설치하지 않는 탐방이 '이와 유사한 행위'에 드는지 알 수 없고, 그 위치가 절대보전지역인지도 모른다" }
+      ],
+      "source_refs": ["N03", "N04"],
+      "criteria": {
+        "C2": { "met": true, "how": "걷는다", "evidence": "operator" },
+        "C3": { "met": true, "how": "시설을 설치하지 않고 채취하지 않는다", "evidence": "operator" },
+        "C4": { "met": true, "how": "지역 해설사", "evidence": "operator" }
+      },
+      "open_points": ["천연기념물의 행위제한 규정을 읽지 않았다", "해빈이 보전지역 구역 안인지 지형도면이 있어야 안다"]
+    },
+    {
+      "id": "udo-coast-monitoring", "name": "해안 생태 모니터링 참여", "subtheme": "protected-land", "region": "우도",
+      "summary": "학술 조사와 연계해 여행자가 해안 생물과 쓰레기를 기록한다",
+      "regulation_checks": [
+        { "card_id": "jeju-absolute-conservation-area", "item_id": "E3", "verdict": "허가 대상",
+          "note": "구역 안이라면 학술적 조사·연구를 목적으로 하는 행위는 도지사 허가 대상이다" }
+      ],
+      "source_refs": ["N04"],
+      "criteria": {
+        "C2": { "met": true, "how": "걷는다", "evidence": "operator" },
+        "C3": { "met": true, "how": "시설을 설치하지 않는다", "evidence": "operator" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "permit_obtained": false,
+      "open_points": ["조사 지점이 절대보전지역 안인지 확인해야 한다", "허가를 받았는지는 운영자가 확인해 준다"]
+    },
+    {
+      "id": "oreum-reopened-walk", "name": "다시 열린 오름 걷기", "subtheme": "oreum-forest", "region": "제주 동부",
+      "summary": "자연휴식년제가 풀린 용눈이오름을 탐방로를 따라 걷는다. 쉬고 있는 오름은 일정에서 뺀다",
+      "regulation_checks": [
+        { "card_id": "jeju-oreum-rest-year", "item_id": "R1", "verdict": "제한 대상 아님",
+          "note": "용눈이오름은 2023-07-01에 자연휴식년제가 해제됐다. 도너리오름과 백약이오름 정상부는 일정에 넣지 않는다" },
+        { "card_id": "jeju-oreum-vehicle-cooking-camping-2026-140", "item_id": "R1", "verdict": "해당 행위 없음",
+          "note": "차마로 오르지 않고 취사·야영을 하지 않는다" }
+      ],
+      "source_refs": [],
+      "criteria": {
+        "C2": { "met": true, "how": "걷는다", "evidence": "operator" },
+        "C3": { "met": true, "how": "쉬는 오름을 피하고 취사·야영을 하지 않는다", "evidence": "card" },
+        "C4": { "met": true, "how": "지역 해설사", "evidence": "operator" }
+      },
+      "open_points": ["용눈이오름이 오름 27곳의 제한 목록에 없다는 것은 카드의 목록으로 확인했다. 다른 오름의 휴식년제 고시는 카드에 다 옮기지 않았다"]
+    },
+    {
+      "id": "oreum-leave-no-trace", "name": "흔적 없는 오름 탐방", "subtheme": "oreum-forest", "region": "제주 전역",
+      "summary": "제한 고시가 있는 국·공유지 오름을 걸어서 오르고, 취사·야영 없이 내려온다",
+      "regulation_checks": [
+        { "card_id": "jeju-oreum-vehicle-cooking-camping-2026-140", "item_id": "R1", "verdict": "해당 행위 없음",
+          "note": "제한되는 차마 출입·취사·야영을 하지 않는다" }
+      ],
+      "source_refs": [],
+      "criteria": {
+        "C2": { "met": true, "how": "걷는다", "evidence": "operator" },
+        "C3": { "met": true, "how": "취사·야영을 하지 않는다", "evidence": "card" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "open_points": ["걸어서 들어가 하는 취사·야영도 제한되는지는 고시 문언이 분명하지 않다. 이 아이템은 어느 쪽이든 하지 않는다"]
+    },
+    {
+      "id": "hallasan-reserved-hike", "name": "예약하고 오르는 한라산", "subtheme": "oreum-forest", "region": "한라산",
+      "summary": "정상 탐방로를 예약하고, 예약을 지키며, 인원 제한의 이유를 함께 안내한다",
+      "regulation_checks": [
+        { "card_id": "hallasan-trail-reservation", "item_id": "R1", "verdict": "확인 필요",
+          "note": "예약제는 2020-11-10 공고 기준이다. 지금의 대상 구간과 인원을 확인하지 못했다" }
+      ],
+      "source_refs": [],
+      "criteria": {
+        "C2": { "met": true, "how": "걷는다. 등산로 입구까지의 이동은 따로 본다", "evidence": "operator" },
+        "C3": { "met": true, "how": "예약 인원 안에서 지정 탐방로를 이용한다", "evidence": "card" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "open_points": ["2022년 이후의 운영 변경을 한라산국립공원관리소 공지에서 확인해야 한다"]
+    },
+    {
+      "id": "fishing-outside-control-zones", "name": "통제구역을 피하는 책임 낚시", "subtheme": "coast-sea", "region": "제주 전역",
+      "summary": "낚시통제구역 10곳을 일정에서 빼고, 쓰레기를 되가져오는 낚시 안내",
+      "regulation_checks": [
+        { "card_id": "jeju-fishing-control-zones-2022-233", "item_id": "R1", "verdict": "제한 대상 아님",
+          "note": "통제구역 10곳 밖에서만 한다" }
+      ],
+      "source_refs": [],
+      "criteria": {
+        "C2": { "met": false, "how": "", "evidence": "operator" },
+        "C3": { "met": true, "how": "통제구역을 피한다", "evidence": "card" },
+        "C4": { "met": false, "how": "", "evidence": "operator" }
+      },
+      "open_points": ["낚시 관리 및 육성법의 다른 준수사항(쓰레기, 낚시제한기준)은 카드에 없다", "2022-10-17 이후 통제구역이 바뀌었는지 확인해야 한다"]
+    }
+  ],
+  "excluded": [
+    {
+      "id": "udo-kickboard-rental", "name": "우도 전동킥보드 대여", "region": "우도",
+      "regulation_checks": [
+        { "card_id": "udo-vehicle-restriction-2026-715", "item_id": "R2-나", "verdict": "저촉",
+          "note": "우도면 내에서 대여 목적으로 운행하는 개인형 이동장치는 제한 대상이다" }
+      ],
+      "reason": "판정에 저촉이 있어 테마에 넣지 않는다"
+    }
+  ]
+}
