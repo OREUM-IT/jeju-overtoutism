@@ -17,6 +17,11 @@
     { "query": "원상회복 이행기간", "expect": ["O01:별표:22708261"] },
     { "query": "차고지증명 대상 자동차", "expect": ["JO30:제3조"] },
     { "query": "우도 해양도립공원 구역", "expect": ["O17:별표:22708559"] },
-    { "query": "상대보전지역에 숙박시설을 지을 수 있나", "expect": ["card:jeju-relative-conservation-area", "L01:제356조"] }
+    { "query": "상대보전지역에 숙박시설을 지을 수 있나", "expect": ["card:jeju-relative-conservation-area", "L01:제356조"] },
+    { "query": "해수욕장에서 불꽃놀이 해도 되나", "expect": ["card:jeju-beach-conduct-rules", "JL04:제22조"] },
+    { "query": "도립공원에서 야영해도 되나", "expect": ["card:jeju-natural-park-prohibited-acts"] },
+    { "query": "해루질 할 때 쓸 수 있는 도구", "expect": ["card:jeju-non-fisher-harvest-standards", "JL15:제7조의2"] },
+    { "query": "곶자왈 보호지역 지정", "expect": ["card:jeju-gotjawal-protection-area"] },
+    { "query": "전동킥보드 무단방치", "expect": ["card:jeju-personal-mobility-duties"] }
   ]
 }
