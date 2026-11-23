@@ -1,0 +1,141 @@
+{
+  "schema_version": "0.1-draft",
+  "card_id": "hallasan-trail-reservation",
+  "title": "한라산국립공원 탐방예약제",
+  "evidence_grade": "extracted",
+  "extracted_by": "model",
+  "extracted_at": "2026-11-23",
+  "reviewed_at": null,
+  "source": {
+    "source_id": "JN-2020-2850",
+    "document": "제주특별자치도 공고 제2020-2850호(시행 공고)",
+    "published": "2020-11-10",
+    "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+    "retrieved_at": "2026-11-23",
+    "local_text": ".local/notices/A_41448.txt",
+    "text_sha256": "6b323ee16955721dfd37fb1d916fda5b1e84e7db545da4be42973dfaa0264eb5"
+  },
+  "additional_sources": [
+    {
+      "source_id": "JN-2022-258",
+      "document": "제주특별자치도 공고 제2022-258호(예약부도자 등 탐방제한)",
+      "published": "2022-01-21",
+      "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+      "retrieved_at": "2026-11-23",
+      "local_text": ".local/notices/A_46529.txt",
+      "text_sha256": "cebc006c758a5f26ee04f10d542b6870a8a8d83c2dc05dfe91fcb2a9ab5dab28"
+    },
+    {
+      "source_id": "JN-2020-458",
+      "document": "제주특별자치도 공고 제2020-458호(시범운영 일시 유보)",
+      "published": "2020-02-12",
+      "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+      "retrieved_at": "2026-11-23",
+      "local_text": ".local/notices/A_38237.txt",
+      "text_sha256": "d345c93781f96db8822f4cc6cd71ab47545d4aea7c300eaa70227d1603ce6e5e"
+    },
+    {
+      "source_id": "L06",
+      "document": "자연공원법",
+      "provisions": [
+        "제28조"
+      ],
+      "version": "조문 시행일 2026-07-07(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/hallasan-trail-reservation/L06.txt",
+      "text_sha256": "7efba05619c5cd2960249caf7044d552191373c207f8fb14cb3432f44d0f1127"
+    }
+  ],
+  "legal_basis": {
+    "locator": "시행 공고 5.",
+    "quote": "5. 근 거 : 「자연공원법」제28조(출입금지 등)",
+    "provisions": [
+      {
+        "src": "L06",
+        "provision": "「자연공원법」 제28조제1항",
+        "summary": "공원관리청은 일정한 지역을 탐방예약구간으로 지정해 탐방객 수를 제한할 수 있다",
+        "quote": "일정한 지역을 탐방예약구간으로 지정하여 탐방객 수를 제한할 수 있다"
+      }
+    ]
+  },
+  "obligation_type": "예약·인원제한",
+  "target_activity": "한라산국립공원 정상 탐방로 탐방",
+  "target_area": {
+    "type": "named_places",
+    "value": "성판악 탐방로와 관음사 탐방로의 정상 구간",
+    "resolvable_from_text": true,
+    "locator": "시행 공고 3.",
+    "quote": "3. 시행(대상)지역"
+  },
+  "validity": {
+    "valid_from": "2021-01-01",
+    "valid_until": null,
+    "until": "별도 공고 시까지",
+    "locator": "시행 공고 2.",
+    "quote": "2. 시행기간: 2021. 01. 01. ~ 별도 공고시까지"
+  },
+  "enforcement_status": "unconfirmed",
+  "status_note": "시행 공고는 2020-11-10의 것이고 '별도 공고 시까지'다. 그 뒤 운영을 바꾼 공고는 게시판 제목 검색('탐방예약')으로 찾지 못했다. 아래 인원과 구간이 지금도 같은지는 이 카드로 답하지 않는다.",
+  "figures": [
+    {
+      "name": "성판악~정상 구간 하루 수용인원",
+      "value": 1000,
+      "unit": "명/일",
+      "quote": "성판악~정상~성판악(관음사) / 편도 / 9.6km / 1,000명"
+    },
+    {
+      "name": "관음사~정상 구간 하루 수용인원",
+      "value": 500,
+      "unit": "명/일",
+      "quote": "관음사~정상~관음사(성판악) / 편도 / 8.7km / 500명"
+    }
+  ],
+  "restricted": [
+    {
+      "id": "R1",
+      "scope": "탐방예약구간",
+      "locator": "시행 공고",
+      "quote": "다음과 같이 탐방예약제 시행을 공고합니다",
+      "acts": [
+        "예약 없는 탐방",
+        "수용인원을 넘는 탐방"
+      ],
+      "conditions": []
+    }
+  ],
+  "no_show_rules": {
+    "src": "JN-2022-258",
+    "locator": "예약부도자 등 탐방제한 공고 3.",
+    "period": {
+      "quote": "2. 제한기간 : 공고일로부터 ~ 별도 공고시까지"
+    },
+    "items": [
+      {
+        "summary": "예약부도 1회: 부도일부터 3개월간 탐방제한",
+        "quote": "1회 예약부도 : 부도일로부터 3개월간 탐방제한"
+      },
+      {
+        "summary": "예약부도 2회: 부도일부터 1년간 탐방제한",
+        "quote": "2회 예약부도 : 부도일로부터 1년간 탐방제한"
+      },
+      {
+        "summary": "탐방예약 QR코드 불법거래: 적발일부터 1년간 탐방제한",
+        "quote": "적발일로부터 1년간 탐방제한"
+      }
+    ]
+  },
+  "history": [
+    {
+      "src": "JN-2020-458",
+      "date": "2020-02-13",
+      "summary": "시범운영(2020-02-01~12-31)을 일시 유보하고 예약 없이 등반할 수 있게 함",
+      "quote": "한라산 탐방예약제 시범운영을 일시 유보합니다"
+    }
+  ],
+  "penalties": [],
+  "open_questions": [
+    "2022년 이후의 운영 변경. 한라산국립공원관리소의 공지를 확인해야 한다.",
+    "예약 없이 탐방한 경우의 처분. 공고문에는 없고 「자연공원법」의 과태료 조문은 옮기지 않았다.",
+    "어리목, 영실 등 다른 탐방로는 시행 공고의 대상에 없다. 다른 제한이 있는지는 확인하지 않았다."
+  ]
+}

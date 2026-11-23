@@ -1,0 +1,22 @@
+{
+  "description": "검색이 기본적으로 도는지 보는 점검 질문. 기대값은 작성자가 원문을 읽고 정한 것이다. 검색 방식을 이 질문에 맞춰 고쳤다면 이 통과율은 검색 품질의 평가가 아니다. 평가용 질문은 따로 만들어야 한다.",
+  "rule": "expect의 모든 식별자가 조문 바로 찾기, 카드 상위 3건, 조문 상위 5건, 별표 상위 3건, 고시·공고 상위 5건 가운데 있어야 통과.",
+  "checks": [
+    { "query": "우도에 렌터카 가져가도 되나", "expect": ["card:udo-vehicle-restriction-2026-715"] },
+    { "query": "절대보전지역에서 할 수 없는 행위", "expect": ["card:jeju-absolute-conservation-area", "L01:제355조"] },
+    { "query": "오름에서 야영이나 취사를 해도 되나", "expect": ["card:jeju-oreum-vehicle-cooking-camping-2026-140"] },
+    { "query": "도너리오름 출입", "expect": ["card:jeju-oreum-rest-year"] },
+    { "query": "렌터카 총량제 신규 등록", "expect": ["card:jeju-rental-car-supply-control-2026-3044", "L01:제427조의2"] },
+    { "query": "해루질 해도 되나", "expect": ["card:jeju-non-fisher-harvest-restriction", "L18:제18조"] },
+    { "query": "낚시 금지 구역 과태료", "expect": ["card:jeju-fishing-control-zones-2022-233"] },
+    { "query": "한라산 탐방 예약 인원", "expect": ["card:hallasan-trail-reservation"] },
+    { "query": "곶자왈 보호지역 지정", "expect": ["JO01:제8조"] },
+    { "query": "자연휴식년제 근거 조례", "expect": ["O09:제7조"] },
+    { "query": "제주특별법 제432조", "expect": ["L01:제432조"] },
+    { "query": "자연환경보전법 제40조", "expect": ["L07:제40조"] },
+    { "query": "원상회복 이행기간", "expect": ["O01:별표:22708261"] },
+    { "query": "차고지증명 대상 자동차", "expect": ["JO30:제3조"] },
+    { "query": "우도 해양도립공원 구역", "expect": ["O17:별표:22708559"] },
+    { "query": "상대보전지역에 숙박시설을 지을 수 있나", "expect": ["card:jeju-relative-conservation-area", "L01:제356조"] }
+  ]
+}
