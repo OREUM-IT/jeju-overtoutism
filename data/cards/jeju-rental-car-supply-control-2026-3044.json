@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-rental-car-supply-control-2026-3044",
+  "place_types": ["mobility"],
   "title": "자동차대여사업 수급조절계획(렌터카 등록제한)",
   "evidence_grade": "extracted",
   "extracted_by": "model",

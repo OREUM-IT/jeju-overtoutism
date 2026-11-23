@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "hallasan-trail-reservation",
+  "place_types": ["hallasan"],
   "title": "한라산국립공원 탐방예약제",
   "evidence_grade": "extracted",
   "extracted_by": "model",

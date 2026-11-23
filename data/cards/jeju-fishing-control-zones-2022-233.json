@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-fishing-control-zones-2022-233",
+  "place_types": ["coast-sea"],
   "title": "제주특별자치도 낚시통제구역",
   "evidence_grade": "extracted",
   "extracted_by": "model",

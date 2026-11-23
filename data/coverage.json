@@ -1,0 +1,867 @@
+{
+  "schema_version": "0.1-draft",
+  "generated_by": "scripts/coverage.py",
+  "inputs": [
+    "data/place-types.json",
+    "data/cards/*.json",
+    "data/udo-regulation-sources.csv",
+    "data/jeju-regulation-sources.csv",
+    "data/udo-collection-manifest.csv",
+    "data/jeju-collection-manifest.csv"
+  ],
+  "status_meaning": {
+    "in_card": "그 유형의 카드가 근거 문서로 쓴다",
+    "text_only": "원문은 받았거나 읽었으나 그 유형의 카드가 쓰지 않는다",
+    "missing": "원문이 없다"
+  },
+  "totals": {
+    "types": 9,
+    "cards": 9,
+    "sources": 89,
+    "sources_assigned": 65,
+    "sources_unassigned": 24
+  },
+  "types": [
+    {
+      "id": "island",
+      "name": "부속 섬",
+      "cards": [
+        "udo-vehicle-restriction-2026-715"
+      ],
+      "sources": [
+        {
+          "id": "L14",
+          "name": "섬 발전 촉진법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "L15",
+          "name": "유선 및 도선 사업법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "L16",
+          "name": "해운법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "N01",
+          "name": "우도면 내 일부자동차 운행(통행)제한 명령 연장(변경) 공고(제주특별자치도 공고 제2026-715호)",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "in_card"
+        },
+        {
+          "id": "N06",
+          "name": "우도면 내 일부자동차 운행(통행)제한 명령 연장(변경) 공고(제주특별자치도 공고 제2025-2407호)",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "missing"
+        },
+        {
+          "id": "N07",
+          "name": "2026-08-01 이후의 우도 운행제한 연장 공고",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "missing"
+        },
+        {
+          "id": "JO29",
+          "name": "제주특별자치도 도로 통행금지 및 제한에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO30",
+          "name": "제주특별자치도 차고지증명 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO33",
+          "name": "제주특별자치도 가파도 아름다운 섬 만들기 지원  및 운영 등에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO34",
+          "name": "제주특별자치도 마라도 공동차량 운행경비 지원 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "마라도·가파도·비양도의 차량 운행제한 공고",
+          "status": "unknown",
+          "note": "차고지증명 조례 별표 1에 도서지역별 선착장이 있다. 섬별 운행제한 공고가 있는지는 찾아보지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 1,
+        "cards_verified": 0,
+        "in_card": 1,
+        "text_only": 7,
+        "missing": 2,
+        "candidates": 1
+      }
+    },
+    {
+      "id": "oreum",
+      "name": "오름",
+      "cards": [
+        "jeju-oreum-rest-year",
+        "jeju-oreum-vehicle-cooking-camping-2026-140"
+      ],
+      "sources": [
+        {
+          "id": "L07",
+          "name": "자연환경보전법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "O07",
+          "name": "제주특별자치도 자연환경관리 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "in_card"
+        },
+        {
+          "id": "O09",
+          "name": "제주특별자치도 오름 보전 및 관리에 관한 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "in_card"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "물찻오름·문석이오름 등 자연휴식년제 기간 연장 고시(제2022-319호)",
+          "status": "title_only",
+          "note": "2022-12-28 게재. 본문을 읽지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 2,
+        "cards_verified": 0,
+        "in_card": 3,
+        "text_only": 0,
+        "missing": 0,
+        "candidates": 1
+      }
+    },
+    {
+      "id": "hallasan",
+      "name": "한라산",
+      "cards": [
+        "hallasan-trail-reservation"
+      ],
+      "sources": [
+        {
+          "id": "L06",
+          "name": "자연공원법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "JL12",
+          "name": "자연공원법 시행령",
+          "list": "jeju",
+          "doc_type": "대통령령",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "2022년 이후 한라산 탐방예약제 운영 변경 공고",
+          "status": "not_found",
+          "note": "도청 게시판의 제목 검색(탐방예약)으로 찾지 못했다. 한라산국립공원관리소 공지는 받지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 1,
+        "cards_verified": 0,
+        "in_card": 1,
+        "text_only": 1,
+        "missing": 0,
+        "candidates": 1
+      }
+    },
+    {
+      "id": "coast-sea",
+      "name": "해안과 바다",
+      "cards": [
+        "jeju-fishing-control-zones-2022-233",
+        "jeju-non-fisher-harvest-restriction"
+      ],
+      "sources": [
+        {
+          "id": "L09",
+          "name": "해양생태계의 보전 및 관리에 관한 법률",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "L17",
+          "name": "공유수면 관리 및 매립에 관한 법률",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "L18",
+          "name": "수산자원관리법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "O14",
+          "name": "제주특별자치도 해양쓰레기 없는 아름다운 해안 가꾸기 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "O16",
+          "name": "제주특별자치도 해녀문화 보존 및 전승에 관한 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JL04",
+          "name": "해수욕장의 이용 및 관리에 관한 법률",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL05",
+          "name": "연안관리법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL06",
+          "name": "수상레저안전법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL07",
+          "name": "낚시 관리 및 육성법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "JO06",
+          "name": "제주특별자치도 해안사구 보전 및 관리에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO07",
+          "name": "제주특별자치도 해양환경 보전 및 활용에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO08",
+          "name": "제주특별자치도 해양생물 보호 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO09",
+          "name": "제주특별자치도 연안관리에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO10",
+          "name": "제주특별자치도 공유수면 관리ㆍ매립에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO11",
+          "name": "제주특별자치도 해수욕장의 이용 및 관리에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO12",
+          "name": "제주특별자치도 마을어장 자원생태환경 조사 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO13",
+          "name": "제주특별자치도 낚시통제구역 지정 및 운영에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "in_card"
+        },
+        {
+          "id": "JO14",
+          "name": "제주특별자치도 낚시 관리 및 산업 육성 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "비어업인의 포획·채취 기준(수산자원관리법 시행령)",
+          "status": "not_collected",
+          "note": "고시 폐지 뒤 적용되는 것으로 읽히는 대통령령. 받지 않았다"
+        },
+        {
+          "name": "수상레저활동 금지구역 지정 고시(제주해양경찰서)",
+          "status": "title_only",
+          "note": "도 공고 제2018-1848호(2018-06-15)가 알린 해경 고시. 다른 기관 소관이다"
+        }
+      ],
+      "counts": {
+        "cards": 2,
+        "cards_verified": 0,
+        "in_card": 3,
+        "text_only": 15,
+        "missing": 0,
+        "candidates": 2
+      }
+    },
+    {
+      "id": "forest-wetland",
+      "name": "곶자왈·습지·숲",
+      "cards": [],
+      "sources": [
+        {
+          "id": "JL01",
+          "name": "습지보전법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL02",
+          "name": "야생생물 보호 및 관리에 관한 법률",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL03",
+          "name": "생물다양성 보전 및 이용에 관한 법률",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JL09",
+          "name": "산림보호법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JO01",
+          "name": "제주특별자치도 곶자왈 보전 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO02",
+          "name": "제주특별자치도 보존자원 관리에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO03",
+          "name": "제주특별자치도 습지보전 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO04",
+          "name": "제주특별자치도 야생생물 보호 및 관리 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO05",
+          "name": "제주특별자치도 생물다양성 보전 및 이용에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO25",
+          "name": "제주특별자치도 자연휴양림  등 입장료 및 시설사용료 징수 등에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "저지·화순곶자왈 생태탐방시설 자연환경보전이용시설 설치계획 고시(제2026-238호, 제2026-239호)",
+          "status": "title_only",
+          "note": "본문을 읽지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 0,
+        "cards_verified": 0,
+        "in_card": 0,
+        "text_only": 10,
+        "missing": 0,
+        "candidates": 1
+      }
+    },
+    {
+      "id": "heritage",
+      "name": "세계자연유산·천연기념물",
+      "cards": [],
+      "sources": [
+        {
+          "id": "L10",
+          "name": "자연유산의 보존 및 활용에 관한 법률",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "O06",
+          "name": "제주특별자치도 유네스코 등록유산 관리에 관한 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "O08",
+          "name": "제주특별자치도 자연유산의 보존 및 활용에 관한 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JL11",
+          "name": "세계유산의 보존ㆍ관리 및 활용에 관한 특별법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JO28",
+          "name": "제주특별자치도 유네스코 등록유산지구 내 해설사 운영 및 지원조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "N03",
+          "name": "천연기념물 제주 우도 홍조단괴 해빈",
+          "list": "udo",
+          "doc_type": "지정",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "거문오름 탐방예약 인원제한 공고(제2020-3109호)",
+          "status": "title_only",
+          "note": "방역과 관련된 공고로 보인다. 본문을 읽지 않았다"
+        },
+        {
+          "name": "역사문화환경 보존지역 내 건축행위 허용기준 조정 공고(2018, 2023, 2024)",
+          "status": "title_only",
+          "note": "본문을 읽지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 0,
+        "cards_verified": 0,
+        "in_card": 0,
+        "text_only": 6,
+        "missing": 0,
+        "candidates": 2
+      }
+    },
+    {
+      "id": "provincial-park",
+      "name": "도립공원",
+      "cards": [],
+      "sources": [
+        {
+          "id": "L06",
+          "name": "자연공원법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "O17",
+          "name": "제주특별자치도립공원 관리 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "N02",
+          "name": "우도해양도립공원 지정과 공원계획",
+          "list": "udo",
+          "doc_type": "고시",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "마라해양도립공원 구역 변경 고시(제2025-115호)",
+          "status": "title_only",
+          "note": "본문을 읽지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 0,
+        "cards_verified": 0,
+        "in_card": 0,
+        "text_only": 3,
+        "missing": 0,
+        "candidates": 1
+      }
+    },
+    {
+      "id": "mobility",
+      "name": "이동수단",
+      "cards": [
+        "jeju-rental-car-supply-control-2026-3044",
+        "udo-vehicle-restriction-2026-715"
+      ],
+      "sources": [
+        {
+          "id": "L03",
+          "name": "자동차관리법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "L04",
+          "name": "도로교통법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "L05",
+          "name": "여객자동차 운수사업법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "O05",
+          "name": "제주특별자치도 여객자동차운수사업 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "in_card"
+        },
+        {
+          "id": "N01",
+          "name": "우도면 내 일부자동차 운행(통행)제한 명령 연장(변경) 공고(제주특별자치도 공고 제2026-715호)",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "in_card"
+        },
+        {
+          "id": "N06",
+          "name": "우도면 내 일부자동차 운행(통행)제한 명령 연장(변경) 공고(제주특별자치도 공고 제2025-2407호)",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "missing"
+        },
+        {
+          "id": "N07",
+          "name": "2026-08-01 이후의 우도 운행제한 연장 공고",
+          "list": "udo",
+          "doc_type": "공고",
+          "status": "missing"
+        },
+        {
+          "id": "JO29",
+          "name": "제주특별자치도 도로 통행금지 및 제한에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO31",
+          "name": "제주특별자치도 개인형 이동장치 이용 안전 증진 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO32",
+          "name": "제주특별자치도 자동차 공회전 제한에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "일부 대여사업 자동차의 운행제한 고시(제2018-162호)",
+          "status": "title_only",
+          "note": "본문을 읽지 않았다"
+        },
+        {
+          "name": "자동차대여사업 차량 운행제한 공고(제2019-1420호)",
+          "status": "title_only",
+          "note": "본문을 읽지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 2,
+        "cards_verified": 0,
+        "in_card": 4,
+        "text_only": 4,
+        "missing": 2,
+        "candidates": 2
+      }
+    },
+    {
+      "id": "conservation-area",
+      "name": "보전지역과 개발",
+      "cards": [
+        "jeju-absolute-conservation-area",
+        "jeju-relative-conservation-area"
+      ],
+      "sources": [
+        {
+          "id": "L01",
+          "name": "제주특별자치도 설치 및 국제자유도시 조성을 위한 특별법",
+          "list": "udo",
+          "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "L02",
+          "name": "제주특별자치도 설치 및 국제자유도시 조성을 위한 특별법 시행령",
+          "list": "udo",
+          "doc_type": "대통령령",
+          "status": "text_only"
+        },
+        {
+          "id": "O01",
+          "name": "제주특별자치도 보전지역 관리에 관한 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "in_card"
+        },
+        {
+          "id": "O10",
+          "name": "제주특별자치도 경관 조례",
+          "list": "udo",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "N04",
+          "name": "우도 지역 절대·상대보전지역 지정 현황",
+          "list": "udo",
+          "doc_type": "고시",
+          "status": "in_card"
+        },
+        {
+          "id": "JL10",
+          "name": "환경영향평가법",
+          "list": "jeju",
+          "doc_type": "법률",
+          "status": "text_only"
+        },
+        {
+          "id": "JO21",
+          "name": "제주특별자치도 환경영향평가 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        },
+        {
+          "id": "JO22",
+          "name": "제주특별자치도 개발사업시행 승인 등에 관한 조례",
+          "list": "jeju",
+          "doc_type": "조례",
+          "status": "text_only"
+        }
+      ],
+      "candidates": [
+        {
+          "name": "절대·상대·관리보전지역의 지형도면(구역 데이터)",
+          "status": "not_collected",
+          "note": "어느 필지가 구역 안인지 알려면 필요하다. 구할 곳을 확인하지 않았다"
+        }
+      ],
+      "counts": {
+        "cards": 2,
+        "cards_verified": 0,
+        "in_card": 3,
+        "text_only": 5,
+        "missing": 0,
+        "candidates": 1
+      }
+    }
+  ],
+  "unassigned": [
+    {
+      "id": "L08",
+      "name": "관광진흥법",
+      "list": "udo"
+    },
+    {
+      "id": "L11",
+      "name": "농어촌정비법",
+      "list": "udo"
+    },
+    {
+      "id": "L12",
+      "name": "공중위생관리법",
+      "list": "udo"
+    },
+    {
+      "id": "L13",
+      "name": "자원의 절약과 재활용촉진에 관한 법률",
+      "list": "udo"
+    },
+    {
+      "id": "O02",
+      "name": "제주특별자치도 생태관광 육성 및 지원에 관한 조례",
+      "list": "udo"
+    },
+    {
+      "id": "O03",
+      "name": "제주특별자치도 관광진흥 조례",
+      "list": "udo"
+    },
+    {
+      "id": "O04",
+      "name": "제주특별자치도 공정관광 육성 및 지원 조례",
+      "list": "udo"
+    },
+    {
+      "id": "O11",
+      "name": "제주특별자치도 환경기본조례",
+      "list": "udo"
+    },
+    {
+      "id": "O12",
+      "name": "제주특별자치도 1회용품 사용 줄이기 조례",
+      "list": "udo"
+    },
+    {
+      "id": "O13",
+      "name": "제주특별자치도 폐기물 관리 조례",
+      "list": "udo"
+    },
+    {
+      "id": "O15",
+      "name": "제주특별자치도 농어촌민박 지원 조례",
+      "list": "udo"
+    },
+    {
+      "id": "JL08",
+      "name": "지하수법",
+      "list": "jeju"
+    },
+    {
+      "id": "JL13",
+      "name": "관광진흥법 시행령",
+      "list": "jeju"
+    },
+    {
+      "id": "JL14",
+      "name": "자연환경보전법 시행령",
+      "list": "jeju"
+    },
+    {
+      "id": "JO15",
+      "name": "제주특별자치도 용천수 활용 및 보전에 관한 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO16",
+      "name": "제주특별자치도 지하수 관리 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO17",
+      "name": "제주특별자치도 환경보전기금 설치 및 운용 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO18",
+      "name": "제주특별자치도 생태계서비스지불제계약 운영 및 관리 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO19",
+      "name": "제주특별자치도 환경자원총량관리위원회 구성 및 운영 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO20",
+      "name": "제주특별자치도 탄소 없는 섬 조성에 관한 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO23",
+      "name": "제주특별자치도 농어촌민박 시설기준 등에 관한 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO24",
+      "name": "제주특별자치도 농어촌관광 활성화 지원조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO26",
+      "name": "제주특별자치도 디지털관광증 발급 및 활성화 조례",
+      "list": "jeju"
+    },
+    {
+      "id": "JO27",
+      "name": "제주특별자치도 공영관광지 운영평가 조례",
+      "list": "jeju"
+    }
+  ]
+}
