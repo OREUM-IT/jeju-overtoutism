@@ -16,9 +16,9 @@
   },
   "totals": {
     "types": 9,
-    "cards": 9,
-    "sources": 89,
-    "sources_assigned": 65,
+    "cards": 14,
+    "sources": 90,
+    "sources_assigned": 66,
     "sources_unassigned": 24
   },
   "types": [
@@ -166,7 +166,8 @@
       "id": "hallasan",
       "name": "한라산",
       "cards": [
-        "hallasan-trail-reservation"
+        "hallasan-trail-reservation",
+        "jeju-natural-park-prohibited-acts"
       ],
       "sources": [
         {
@@ -181,7 +182,7 @@
           "name": "자연공원법 시행령",
           "list": "jeju",
           "doc_type": "대통령령",
-          "status": "text_only"
+          "status": "in_card"
         }
       ],
       "candidates": [
@@ -192,10 +193,10 @@
         }
       ],
       "counts": {
-        "cards": 1,
+        "cards": 2,
         "cards_verified": 0,
-        "in_card": 1,
-        "text_only": 1,
+        "in_card": 2,
+        "text_only": 0,
         "missing": 0,
         "candidates": 1
       }
@@ -204,8 +205,10 @@
       "id": "coast-sea",
       "name": "해안과 바다",
       "cards": [
+        "jeju-beach-conduct-rules",
         "jeju-fishing-control-zones-2022-233",
-        "jeju-non-fisher-harvest-restriction"
+        "jeju-non-fisher-harvest-restriction",
+        "jeju-non-fisher-harvest-standards"
       ],
       "sources": [
         {
@@ -248,7 +251,7 @@
           "name": "해수욕장의 이용 및 관리에 관한 법률",
           "list": "jeju",
           "doc_type": "법률",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "JL05",
@@ -269,6 +272,13 @@
           "name": "낚시 관리 및 육성법",
           "list": "jeju",
           "doc_type": "법률",
+          "status": "in_card"
+        },
+        {
+          "id": "JL15",
+          "name": "수산자원관리법 시행령",
+          "list": "jeju",
+          "doc_type": "대통령령",
           "status": "in_card"
         },
         {
@@ -311,7 +321,7 @@
           "name": "제주특별자치도 해수욕장의 이용 및 관리에 관한 조례",
           "list": "jeju",
           "doc_type": "조례",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "JO12",
@@ -337,29 +347,26 @@
       ],
       "candidates": [
         {
-          "name": "비어업인의 포획·채취 기준(수산자원관리법 시행령)",
-          "status": "not_collected",
-          "note": "고시 폐지 뒤 적용되는 것으로 읽히는 대통령령. 받지 않았다"
-        },
-        {
           "name": "수상레저활동 금지구역 지정 고시(제주해양경찰서)",
           "status": "title_only",
           "note": "도 공고 제2018-1848호(2018-06-15)가 알린 해경 고시. 다른 기관 소관이다"
         }
       ],
       "counts": {
-        "cards": 2,
+        "cards": 4,
         "cards_verified": 0,
-        "in_card": 3,
-        "text_only": 15,
+        "in_card": 6,
+        "text_only": 13,
         "missing": 0,
-        "candidates": 2
+        "candidates": 1
       }
     },
     {
       "id": "forest-wetland",
       "name": "곶자왈·습지·숲",
-      "cards": [],
+      "cards": [
+        "jeju-gotjawal-protection-area"
+      ],
       "sources": [
         {
           "id": "JL01",
@@ -394,7 +401,7 @@
           "name": "제주특별자치도 곶자왈 보전 및 관리 조례",
           "list": "jeju",
           "doc_type": "조례",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "JO02",
@@ -440,10 +447,10 @@
         }
       ],
       "counts": {
-        "cards": 0,
+        "cards": 1,
         "cards_verified": 0,
-        "in_card": 0,
-        "text_only": 10,
+        "in_card": 1,
+        "text_only": 9,
         "missing": 0,
         "candidates": 1
       }
@@ -520,28 +527,30 @@
     {
       "id": "provincial-park",
       "name": "도립공원",
-      "cards": [],
+      "cards": [
+        "jeju-natural-park-prohibited-acts"
+      ],
       "sources": [
         {
           "id": "L06",
           "name": "자연공원법",
           "list": "udo",
           "doc_type": "법률",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "O17",
           "name": "제주특별자치도립공원 관리 조례",
           "list": "udo",
           "doc_type": "조례",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "N02",
           "name": "우도해양도립공원 지정과 공원계획",
           "list": "udo",
           "doc_type": "고시",
-          "status": "text_only"
+          "status": "in_card"
         }
       ],
       "candidates": [
@@ -552,10 +561,10 @@
         }
       ],
       "counts": {
-        "cards": 0,
+        "cards": 1,
         "cards_verified": 0,
-        "in_card": 0,
-        "text_only": 3,
+        "in_card": 3,
+        "text_only": 0,
         "missing": 0,
         "candidates": 1
       }
@@ -564,6 +573,7 @@
       "id": "mobility",
       "name": "이동수단",
       "cards": [
+        "jeju-personal-mobility-duties",
         "jeju-rental-car-supply-control-2026-3044",
         "udo-vehicle-restriction-2026-715"
       ],
@@ -629,7 +639,7 @@
           "name": "제주특별자치도 개인형 이동장치 이용 안전 증진 조례",
           "list": "jeju",
           "doc_type": "조례",
-          "status": "text_only"
+          "status": "in_card"
         },
         {
           "id": "JO32",
@@ -652,10 +662,10 @@
         }
       ],
       "counts": {
-        "cards": 2,
+        "cards": 3,
         "cards_verified": 0,
-        "in_card": 4,
-        "text_only": 4,
+        "in_card": 5,
+        "text_only": 3,
         "missing": 2,
         "candidates": 2
       }
