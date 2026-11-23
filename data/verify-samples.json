@@ -1,0 +1,123 @@
+{
+  "description": "인용 검사기(scripts/verify_answer.py)가 잡아야 할 것과 통과시켜야 할 것의 견본. expect는 pass(통과), warn(통과하되 경고), blocked(차단) 가운데 하나다.",
+  "samples": [
+    {
+      "name": "카드 인용문이 맞는 사실 서술",
+      "expect": "pass",
+      "date": "2026-06-15",
+      "statement": {
+        "kind": "fact",
+        "text": "우도면 내 일부자동차 운행제한의 제한구역은 우도면 전역이다.",
+        "basis": [{ "card_id": "udo-vehicle-restriction-2026-715", "item_id": "target_area", "quote": "우도면 전역" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "기간이 끝난 카드를 근거로 든 사실 서술",
+      "expect": "warn",
+      "date": "2026-11-23",
+      "statement": {
+        "kind": "fact",
+        "text": "우도면 내 일부자동차 운행제한의 제한구역은 우도면 전역이다.",
+        "basis": [{ "card_id": "udo-vehicle-restriction-2026-715", "item_id": "target_area", "quote": "우도면 전역" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "인용문을 고친 경우(16인승을 6인승 이하로)",
+      "expect": "blocked",
+      "statement": {
+        "kind": "fact",
+        "text": "전세버스는 승차정원 6인승 이하만 우도에 들어갈 수 있다.",
+        "basis": [{ "card_id": "udo-vehicle-restriction-2026-715", "item_id": "R1-다",
+                    "quote": "전세버스 운송사업에 사용되는 자동차 중 승차정원이 6인승 이하인 자동차 및 자동차 대여사업에 사용되는 자동차 중 제1종 저공해자동차는 제외한다" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "근거에 없는 숫자(과태료 50만원)",
+      "expect": "blocked",
+      "statement": {
+        "kind": "fact",
+        "text": "운행제한 명령을 위반하면 과태료 50만원이 부과된다.",
+        "basis": [{ "card_id": "udo-vehicle-restriction-2026-715", "item_id": "X1", "quote": "10만원의 과태료 부과" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "근거가 전혀 없는 사실 서술",
+      "expect": "blocked",
+      "statement": { "kind": "fact", "text": "우도는 입도세를 받는다.", "basis": [], "source_refs": [] }
+    },
+    {
+      "name": "없는 카드를 인용",
+      "expect": "blocked",
+      "statement": {
+        "kind": "fact",
+        "text": "성산일출봉은 하루 입장 인원을 제한한다.",
+        "basis": [{ "card_id": "seongsan-entry-limit", "item_id": "R1", "quote": "하루 입장 인원" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "수집 대상 목록에 없는 ID",
+      "expect": "blocked",
+      "statement": { "kind": "fact", "text": "환경보전분담금이 시행 중이다.", "basis": [], "source_refs": ["X99"] }
+    },
+    {
+      "name": "수집 대상 ID만으로 받친 사실 서술",
+      "expect": "pass",
+      "statement": {
+        "kind": "fact",
+        "text": "천연기념물 제주 우도 홍조단괴 해빈의 지정일은 2004-04-09이다.",
+        "basis": [],
+        "source_refs": ["N03"]
+      }
+    },
+    {
+      "name": "폐지된 카드를 근거로 든 사실 서술",
+      "expect": "warn",
+      "statement": {
+        "kind": "fact",
+        "text": "비어업인의 포획·채취는 일출 전 30분부터 일몰 후 30분까지로 한정한다.",
+        "basis": [{ "card_id": "jeju-non-fisher-harvest-restriction", "item_id": "R1", "quote": "일출 전 30분부터 일몰 후 30분내로 한정한다" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "조문 인용이 맞는 사실 서술",
+      "expect": "pass",
+      "statement": {
+        "kind": "fact",
+        "text": "지방자치단체의 장은 조례로 정하는 바에 따라 출입·취사·야영행위를 제한할 수 있다.",
+        "basis": [{ "provision_id": "L07:제40조", "quote": "출입ㆍ취사ㆍ야영행위를 제한할 수 있다" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "조문에 없는 말을 조문 인용으로 적은 경우",
+      "expect": "blocked",
+      "statement": {
+        "kind": "fact",
+        "text": "오름에서는 드론 비행이 금지된다.",
+        "basis": [{ "provision_id": "L07:제40조", "quote": "드론 비행을 금지할 수 있다" }],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "근거 없는 제안은 차단하지 않고 경고",
+      "expect": "warn",
+      "statement": {
+        "kind": "measure",
+        "text": "도항선 승객을 하루 3000명으로 제한하는 방안을 검토한다.",
+        "basis": [],
+        "source_refs": []
+      }
+    },
+    {
+      "name": "숫자 없는 제안은 통과",
+      "expect": "pass",
+      "statement": { "kind": "measure", "text": "연장 공고를 만료 전에 게시판과 도보에 함께 게재한다.", "basis": [], "source_refs": ["N07"] }
+    }
+  ]
+}
