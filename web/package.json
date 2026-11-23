@@ -1,0 +1,38 @@
+{
+  "name": "jeju-greencheck-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "제주 그린체크(가칭) 화면 시안. 저장소의 규제 카드(data/cards)를 읽어 판정과 근거를 보여 준다.",
+  "scripts": {
+    "sync-data": "node scripts/sync-data.mjs",
+    "predev": "npm run sync-data",
+    "dev": "next dev",
+    "prebuild": "npm run sync-data",
+    "build": "next build",
+    "start": "next start",
+    "pretypecheck": "npm run sync-data",
+    "typecheck": "tsc --noEmit",
+    "pretest": "npm run sync-data",
+    "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "16.4.6",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.2.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.19",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
