@@ -226,6 +226,8 @@ export function openQuestions(card: RegulationCard, keywords: string[]): string[
 export interface FinalContext {
   /** 판정 기준일(방문일 등). 없으면 카드의 시행 상태로 본다 */
   date?: string;
+  /** 기준일을 부르는 말. 기본값 "기준일" */
+  dateLabel?: string;
   /** 대상 지역을 사용자가 확인했다고 입력했는지 */
   areaResolved?: boolean;
   /** 유효 기간 뒤일 때 덧붙일 설명(예: 보도만 있는 연장 소식) */
@@ -259,13 +261,13 @@ export function finalVerdict(card: RegulationCard, preliminary: VerdictValue, ct
     if (until && ctx.date > until) {
       reasons.push({
         code: 'outside_validity',
-        message: `기준일(${ctx.date})이 이 공고의 제한기간(${range}) 뒤입니다. 그 뒤의 공고 원문은 확보하지 못했습니다.`,
+        message: `${ctx.dateLabel ?? '기준일'}(${ctx.date})이 이 공고의 제한기간(${range}) 뒤입니다. 그 뒤의 공고 원문은 확보하지 못했습니다.`,
         detail: ctx.afterValidityDetail,
       });
     } else if (from && ctx.date < from) {
       reasons.push({
         code: 'outside_validity',
-        message: `기준일(${ctx.date})이 이 공고의 제한기간(${range}) 앞입니다. 그 기간에는 이전 공고를 봐야 합니다.`,
+        message: `${ctx.dateLabel ?? '기준일'}(${ctx.date})이 이 공고의 제한기간(${range}) 앞입니다. 그 기간에는 이전 공고를 봐야 합니다.`,
       });
     }
   } else if (card.enforcement_status !== 'in_force') {

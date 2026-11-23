@@ -453,7 +453,7 @@ export function checkVisit(input: VisitInput, today: string, card: RegulationCar
   const afterValidityDetail = followUp
     ? `수집 대상 목록 ${followUp.id}(보도만 있음): ${followUp.note}`
     : undefined;
-  const final = finalVerdict(card, branch.value, { date: input.date, afterValidityDetail });
+  const final = finalVerdict(card, branch.value, { date: input.date, dateLabel: '방문일', afterValidityDetail });
 
   const keywords = [...(after ? ['연장 공고'] : []), ...(branch.questions ?? [])];
   const proof = card.permitted_entry?.proof;

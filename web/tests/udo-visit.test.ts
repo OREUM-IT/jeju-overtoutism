@@ -58,6 +58,7 @@ describe('docs/05 5절 운행제한 카드 예시 표', () => {
 
   it('기간 밖 이유에 보도만 있는 연장 소식(수집 대상 N07)을 붙인다', () => {
     const reason = run({ date: TODAY }).final.reasons.find((r) => r.code === 'outside_validity');
+    assert.match(reason?.message ?? '', /^방문일\(2026-11-23\)/);
     assert.ok(reason?.detail?.includes('N07'));
     assert.ok(reason?.detail?.includes('보도'));
   });
