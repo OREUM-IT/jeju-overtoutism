@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+# scripts/sync-data.mjs가 ../data에서 만든다. 원본은 저장소의 data/ 하나뿐이다.
+generated/
+next-env.d.ts
+*.tsbuildinfo
+test-results/
+playwright-report/
+.vercel
