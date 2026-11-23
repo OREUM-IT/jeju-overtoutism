@@ -1,0 +1,146 @@
+{
+  "schema_version": "0.1-draft",
+  "card_id": "jeju-rental-car-supply-control-2026-3044",
+  "title": "자동차대여사업 수급조절계획(렌터카 등록제한)",
+  "evidence_grade": "extracted",
+  "extracted_by": "model",
+  "extracted_at": "2026-11-23",
+  "reviewed_at": null,
+  "source": {
+    "source_id": "JN-2026-3044",
+    "document": "제주특별자치도 공고 제2026-3044호",
+    "published": "2026-09-16",
+    "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+    "retrieved_at": "2026-11-23",
+    "local_text": ".local/notices/A_67780.txt",
+    "text_sha256": "9140c4520c194f65eb04cf7dcdb3bb0d2281cb7ec2c4b89cc30f4798984c12d2"
+  },
+  "additional_sources": [
+    {
+      "source_id": "L01",
+      "document": "제주특별자치도 설치 및 국제자유도시 조성을 위한 특별법",
+      "provisions": [
+        "제427조의2"
+      ],
+      "version": "조문 시행일 2026-11-13(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-rental-car-supply-control-2026-3044/L01.txt",
+      "text_sha256": "b3b63e584f86f71b059709b104e608e8d656da205a615148a770f0dfb34ee389"
+    },
+    {
+      "source_id": "O05",
+      "document": "제주특별자치도 여객자동차운수사업 조례",
+      "provisions": [
+        "제51조"
+      ],
+      "version": "조문 시행일 2026-06-30(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-rental-car-supply-control-2026-3044/O05.txt",
+      "text_sha256": "91e2b9f8f1c50b56df65b51fea41259b9cc126aea80e53b07db60a7b10a9333a"
+    }
+  ],
+  "legal_basis": {
+    "locator": "공고 전문",
+    "quote": "「제주특별법」제427조의2(자동차대여사업 수급조절계획의 수립 등에 관한 특례)",
+    "provisions": [
+      {
+        "src": "L01",
+        "provision": "제주특별법 제427조의2제3항",
+        "summary": "도지사는 수급조절계획에 따라 자동차대여사업의 등록을 3년 범위에서 제한할 수 있고 2년 단위로 연장할 수 있다",
+        "quote": "도지사는 수급조절계획에 따라 자동차대여사업의 등록을 3년의 범위에서 일정 기간 제한할 수 있다"
+      },
+      {
+        "src": "O05",
+        "provision": "「여객자동차운수사업 조례」 제51조제2항",
+        "summary": "수급조절계획은 2년 단위로 수립한다",
+        "quote": "수급조절계획은 2년 단위로 수립하여야 한다"
+      }
+    ]
+  },
+  "obligation_type": "총량·등록제한",
+  "target_activity": "제주도 안에서 자동차대여사업의 신규등록과 증차",
+  "target_area": {
+    "type": "jurisdiction",
+    "value": "제주특별자치도 전역",
+    "resolvable_from_text": true,
+    "locator": "변경사항 ②",
+    "quote": "제주도내 주사무소 및 영업소의 증차를 수반하는"
+  },
+  "validity": {
+    "valid_from": "2026-09-21",
+    "valid_until": "2028-09-20",
+    "locator": "3., 변경사항",
+    "quote": "3. 시 행 일: 2026. 9. 21.",
+    "period": {
+      "quote": "26. 9. 21. ~"
+    },
+    "note": "등록제한 기간은 공고문에 '26. 9. 21. ~ '28. 9. 20.(2년간)으로 적혀 있다. 직전 기간은 '24. 9. 21. ~ '26. 9. 20.이었다."
+  },
+  "enforcement_status": "in_force",
+  "status_note": "2028-09-20에 끝난다. 그 뒤는 새 공고로 확인한다.",
+  "figures": [
+    {
+      "name": "자동차대여사업 적정 공급규모",
+      "value": 28499,
+      "unit": "대",
+      "previous": 28300,
+      "quote": "(자동차대여사업 적정 공급규모) / - 28,499대",
+      "previous_quote": {
+        "quote": "(자동차대여사업 적정 공급규모) / - 28,300대"
+      }
+    }
+  ],
+  "restricted": [
+    {
+      "id": "R1",
+      "scope": "신규등록",
+      "locator": "변경사항 ①",
+      "quote": "(신규등록의 제한)",
+      "acts": [
+        "자동차대여사업의 등록차량 신규등록"
+      ],
+      "detail": {
+        "quote": "자동차대여사업의 등록차량"
+      },
+      "conditions": []
+    },
+    {
+      "id": "R2",
+      "scope": "변경등록",
+      "locator": "변경사항 ②",
+      "quote": "(변경등록의 제한)",
+      "acts": [
+        "대여사업용 차량의 증차",
+        "증차를 수반하는 양도·양수 신고"
+      ],
+      "detail": {
+        "quote": "대여사업용 차량의 증차차량"
+      },
+      "conditions": []
+    }
+  ],
+  "exceptions": {
+    "locator": "변경사항 ③",
+    "quote": "(등록제한 예외)",
+    "items": [
+      {
+        "summary": "감차목표를 완료한 업체의 양도·양수에 따른 등록",
+        "quote": "도내 감차완료 업체(영업소 포함)끼리"
+      },
+      {
+        "summary": "보조금으로 구입을 지원한 관광약자 리프트차량 5대 범위의 증차",
+        "quote": "관광약자 리프트차량(5대)에 한하여"
+      },
+      {
+        "summary": "초소형전기차 실증지원 사업용 차량의 예외는 이번 변경에서 삭제됨",
+        "quote": "< 삭 제 >"
+      }
+    ]
+  },
+  "penalties": [],
+  "open_questions": [
+    "공고문에는 변경사항만 있다. 수급조절계획 전체와 감차목표는 받지 않았다.",
+    "등록제한을 어긴 경우의 처분은 공고문에 없다.",
+    "예외의 세부 조건(양도·양수 신고 수리 후 기한 등)은 표의 칸이 길어 일부만 옮겼다."
+  ]
+}

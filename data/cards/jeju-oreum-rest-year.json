@@ -1,0 +1,185 @@
+{
+  "schema_version": "0.1-draft",
+  "card_id": "jeju-oreum-rest-year",
+  "title": "오름 자연휴식년제(출입제한)",
+  "evidence_grade": "extracted",
+  "extracted_by": "model",
+  "extracted_at": "2026-11-23",
+  "reviewed_at": null,
+  "source": {
+    "source_id": "JN-2024-278",
+    "document": "제주특별자치도고시 제2024-278호(도너리오름)",
+    "published": "2024-12-27",
+    "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+    "retrieved_at": "2026-11-23",
+    "local_text": ".local/notices/N_59580.txt",
+    "text_sha256": "bed5a9c125b48a25e6836e1e32e6c780fd6107f462f0bf716b849fe360d7df9f"
+  },
+  "additional_sources": [
+    {
+      "source_id": "JN-2024-153",
+      "document": "제주특별자치도고시 제2024-153호(백약이오름)",
+      "published": "2024-07-24",
+      "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+      "retrieved_at": "2026-11-23",
+      "local_text": ".local/notices/N_58167.txt",
+      "text_sha256": "f5b52784d6b57abeef9c949a2fb65e4e6931fa9ec480404ea6863f2a5e1511e2"
+    },
+    {
+      "source_id": "JN-2023-128",
+      "document": "제주특별자치도고시 제2023-128호(용눈이오름 해제)",
+      "published": "2023-06-14",
+      "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+      "retrieved_at": "2026-11-23",
+      "local_text": ".local/notices/N_53450.txt",
+      "text_sha256": "dcc4eb610dd89cc07ddf3a15aad5bebe718f1252efff8aeaa874f63329df6c65"
+    },
+    {
+      "source_id": "O09",
+      "document": "제주특별자치도 오름 보전 및 관리에 관한 조례",
+      "provisions": [
+        "제7조"
+      ],
+      "version": "조문 시행일 2022-12-30(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-oreum-rest-year/O09.txt",
+      "text_sha256": "9828fc40ec94d47b6d860e058ed306f2cd0659ee717013b184ceacdd49114b05"
+    },
+    {
+      "source_id": "L07",
+      "document": "자연환경보전법",
+      "provisions": [
+        "제40조",
+        "제66조"
+      ],
+      "version": "조문 시행일 2026-09-26(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-oreum-rest-year/L07.txt",
+      "text_sha256": "da76fc7d70a04c94476a4e89c3e02aebd6c06e19678f8d0edd1b42d878ce2085"
+    }
+  ],
+  "legal_basis": {
+    "locator": "고시 전문",
+    "quote": "「자연환경보전법」제40조,「제주특별자치도 자연환경관리 조례」제9조의4 및「제주특별자치도 오름 보전 및 관리에 관한 조례」제7조에 의거",
+    "provisions": [
+      {
+        "src": "O09",
+        "provision": "「오름 보전 및 관리에 관한 조례」 제7조",
+        "summary": "국유지·공유지의 오름 등 탐방활동을 제한할 필요가 있는 오름에 자연휴식년제를 실시할 수 있다. 사유지 오름은 토지주와 협의한다",
+        "quote": "탐방활동을 제한할 필요가 있는 오름에 대하여 자연휴식년제를 실시할 수 있다"
+      },
+      {
+        "src": "L07",
+        "provision": "「자연환경보전법」 제40조",
+        "quote": "출입ㆍ취사ㆍ야영행위를 제한할 수 있다"
+      }
+    ]
+  },
+  "obligation_type": "금지",
+  "target_activity": "자연휴식년제 대상 오름의 출입",
+  "target_area": {
+    "type": "named_places",
+    "value": "고시로 정한 오름",
+    "resolvable_from_text": true,
+    "note": "오름마다 고시가 따로 나온다. 이 카드는 받은 고시 가운데 세 건만 옮겼다.",
+    "locator": "제2024-278호 3.",
+    "quote": "도너리오름 전면 출입제한"
+  },
+  "validity": {
+    "valid_from": null,
+    "valid_until": null,
+    "note": "오름마다 기간이 다르다. instances를 본다."
+  },
+  "instances": [
+    {
+      "name": "도너리오름",
+      "location": "서귀포시 안덕면 동광리 산90-1 일대",
+      "area_m2": 306309,
+      "method": "전면 출입제한",
+      "valid_from": "2025-01-01",
+      "valid_until": "2026-12-31",
+      "status": "in_force",
+      "note": "12차 연장. 2026-12-31 뒤의 연장 여부는 새 고시로 확인한다",
+      "quote": "| 도너리오름 | 서귀포시 안덕면 동광리 산90-1 일대 | 306,309 | 2023. 1. 1. ~ / 2024. 12. 31. | 2025. 1. 1. ~ / 2026. 12. 31. | 2년 연장(12차) |"
+    },
+    {
+      "src": "JN-2024-153",
+      "name": "백약이오름",
+      "location": "서귀포시 표선면 성읍리",
+      "area_m2": 140,
+      "method": "정상부 봉우리 출입제한",
+      "valid_from": "2024-08-01",
+      "valid_until": null,
+      "until": "별도 고시일까지",
+      "status": "in_force_until_notice",
+      "quote": "백약이오름 정상부 봉우리 출입제한",
+      "period": {
+        "quote": "별도 고시일까지"
+      }
+    },
+    {
+      "src": "JN-2023-128",
+      "name": "용눈이오름",
+      "location": "제주시 구좌읍 종달리 산28 일대",
+      "area_m2": 404264,
+      "method": "자연휴식년제 해제",
+      "lifted_on": "2023-07-01",
+      "status": "lifted",
+      "quote": "용눈이오름에 대하여 자연휴식년제 해제 고시합니다",
+      "effective": {
+        "quote": "2. 시행일 : 2023. 7. 1.부터"
+      }
+    }
+  ],
+  "enforcement_status": "varies",
+  "status_note": "오름마다 다르다. 도너리오름은 2026-12-31까지, 백약이오름 정상부는 별도 고시일까지 제한이고, 용눈이오름은 2023-07-01에 해제됐다. 이 카드에 없는 오름은 판정하지 않는다.",
+  "restricted": [
+    {
+      "id": "R1",
+      "scope": "자연휴식년제 대상 오름",
+      "locator": "제2024-278호 1.",
+      "quote": "일정기간 탐방을 제한하는 자연휴식년제를 시행함으로써",
+      "acts": [
+        "출입"
+      ],
+      "conditions": []
+    }
+  ],
+  "exceptions": {
+    "locator": "제2024-278호 5.",
+    "items": [
+      {
+        "summary": "군사 목적상 필요한 출입",
+        "quote": "군사 목적상 필요한 행위를 하고자 출입하는 경우"
+      },
+      {
+        "summary": "토지 소유자·관리자의 영농 등 출입",
+        "quote": "토지를 소유하거나 관리하는 자로서 출입제한의 목적 범위를 벗어나지 않는 범위 내에서 영농행위 등을 위하여 출입하는 경우"
+      },
+      {
+        "summary": "도지사가 인정하는 학술조사·연구, 재해 조치, 공무수행, 행사 등",
+        "quote": "학술조사, 연구 등을 위하여 출입하는 경우"
+      }
+    ]
+  },
+  "penalties": [
+    {
+      "id": "X1",
+      "violation": "출입제한 위반",
+      "type": "과태료",
+      "amount_krw_max": 2000000,
+      "locator": "제2024-278호 4.",
+      "quote": "「자연환경보전법」제66조제2항에 의거 200만원 이하의 과태료 부과",
+      "law": {
+        "src": "L07",
+        "locator": "제66조제2항제4호",
+        "quote": "제40조에 따른 입목의 벌채, 토지의 형질변경, 출입ㆍ취사ㆍ야영행위의 제한을 위반한 사람"
+      }
+    }
+  ],
+  "open_questions": [
+    "물찻오름, 문석이오름, 송악산 정상부 등 다른 오름의 고시는 받아 두었으나 이 카드에 옮기지 않았다. 지금 어느 오름이 대상인지 전체 목록은 이 카드로 알 수 없다.",
+    "조례 제7조제2항은 시행에 필요한 사항을 규칙으로 정한다고 한다. 그 규칙은 읽지 않았다.",
+    "도너리오름의 2027-01-01 이후."
+  ]
+}
