@@ -1,0 +1,162 @@
+{
+  "schema_version": "0.1-draft",
+  "card_id": "jeju-fishing-control-zones-2022-233",
+  "title": "제주특별자치도 낚시통제구역",
+  "evidence_grade": "extracted",
+  "extracted_by": "model",
+  "extracted_at": "2026-11-23",
+  "reviewed_at": null,
+  "source": {
+    "source_id": "JN-2022-233",
+    "document": "제주특별자치도 고시 제2022-233호",
+    "published": "2022-10-17",
+    "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+    "retrieved_at": "2026-11-23",
+    "local_text": ".local/notices/N_50033.txt",
+    "text_sha256": "32f4605e2ea8d251a0401d07bc284b0b5a8a33dc5c334aae9e49716eb41eca23"
+  },
+  "additional_sources": [
+    {
+      "source_id": "JL07",
+      "document": "낚시 관리 및 육성법",
+      "provisions": [
+        "제6조",
+        "제55조"
+      ],
+      "version": "조문 시행일 2025-06-21(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-fishing-control-zones-2022-233/JL07.txt",
+      "text_sha256": "e2f3c6bb454eb15db880bd2608e584feb0a936ddf49a3efec0ddb10b94df7401"
+    },
+    {
+      "source_id": "JO13",
+      "document": "제주특별자치도 낚시통제구역 지정 및 운영에 관한 조례",
+      "provisions": [
+        "제4조"
+      ],
+      "version": "조문 시행일 2022-11-23(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-fishing-control-zones-2022-233/JO13.txt",
+      "text_sha256": "2dead239777d0723e55c269ad00cf799e2d7d9c570a06a6249cde0de1cd86fad"
+    }
+  ],
+  "legal_basis": {
+    "locator": "고시 전문",
+    "quote": "「낚시 관리 및 육성법」제6조 및 「제주특별자치도 낚시통제구역 지정 및 운영에 관한 조례」제4조에 따라",
+    "provisions": [
+      {
+        "src": "JL07",
+        "provision": "「낚시 관리 및 육성법」 제6조제1항",
+        "summary": "수생태계와 수산자원의 보호, 낚시인의 안전사고 예방 등을 위해 낚시통제구역을 지정·고시할 수 있다",
+        "quote": "일정한 지역을 낚시통제구역으로 지정하여 고시할 수 있다"
+      },
+      {
+        "src": "JO13",
+        "provision": "「낚시통제구역 지정 및 운영에 관한 조례」 제4조",
+        "quote": "제4조(낚시통제구역의 지정 절차)"
+      }
+    ]
+  },
+  "obligation_type": "금지",
+  "target_activity": "낚시통제구역에서의 낚시",
+  "target_area": {
+    "type": "named_places",
+    "value": "낚시통제구역 10곳",
+    "resolvable_from_text": true,
+    "note": "이름, 위치, 면적이 고시의 표에 있다. 경계 도형은 없다.",
+    "locator": "1.",
+    "quote": "계 10개소",
+    "areas": [
+      {
+        "name": "화도(대관탈) 동쪽여 및 끝여",
+        "location": "제주시 추자면",
+        "quote": "화도(대관탈) 동쪽여 및 끝여"
+      },
+      {
+        "name": "화도(대관탈) 마당여",
+        "location": "제주시 추자면",
+        "quote": "화도(대관탈) 마당여"
+      },
+      {
+        "name": "해암서(작은관탈) 및 부속여",
+        "location": "제주시 추자면",
+        "quote": "해암서(작은관탈) 및 부속여"
+      },
+      {
+        "name": "절명이",
+        "location": "제주시 추자면",
+        "quote": "절명이"
+      },
+      {
+        "name": "절명이 고구마여 및 끝여",
+        "location": "제주시 추자면",
+        "quote": "절명이 고구마여 및 끝여"
+      },
+      {
+        "name": "직구 서쪽벽",
+        "location": "제주시 추자면",
+        "quote": "직구 서쪽벽"
+      },
+      {
+        "name": "도두항동방파제 입구 갯바위",
+        "location": "제주시 도두1동",
+        "quote": "도두항동방파제 입구 갯바위"
+      },
+      {
+        "name": "섭이여",
+        "location": "차귀도~수월봉 사이",
+        "quote": "섭이여"
+      },
+      {
+        "name": "홀애미여",
+        "location": "서귀포 가파도 서쪽",
+        "quote": "홀애미여"
+      },
+      {
+        "name": "형제섬 주변 홍합여",
+        "location": "서귀포시 안덕면 사계리",
+        "quote": "형제섬 주변 홍합여"
+      }
+    ]
+  },
+  "validity": {
+    "valid_from": "2022-10-17",
+    "valid_until": null,
+    "until": "연중, 종료일 없음",
+    "locator": "3., 4.",
+    "quote": "3. 낚시통제구역의 통제기간 : 연중"
+  },
+  "enforcement_status": "in_force",
+  "status_note": "기한이 없다. 지정 해제나 변경 고시가 나왔는지 확인해야 한다. 2026-11-23에 받은 게시판 목록에는 이 고시 뒤의 낚시통제구역 고시가 없었다.",
+  "restricted": [
+    {
+      "id": "R1",
+      "scope": "낚시통제구역 10곳",
+      "locator": "5.",
+      "quote": "낚시통제구역에서 낚시를 한 자에게는 300만원 이하의 과태료 부과",
+      "acts": [
+        "낚시"
+      ],
+      "conditions": []
+    }
+  ],
+  "penalties": [
+    {
+      "id": "X1",
+      "violation": "낚시통제구역에서 낚시",
+      "type": "과태료",
+      "amount_krw_max": 3000000,
+      "locator": "5.",
+      "quote": "300만원 이하의 과태료 부과",
+      "law": {
+        "src": "JL07",
+        "locator": "제55조제1항제1호",
+        "quote": "제6조제1항에 따라 지정ㆍ고시한 낚시통제구역에서 낚시를 한 자"
+      }
+    }
+  ],
+  "open_questions": [
+    "구역의 정확한 범위. 고시의 표에는 이름, 인근 지번, 면적만 있다.",
+    "조례 제4조의 지정 절차 본문은 제목만 인용했다."
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schema_version": "0.1-draft",
+  "card_id": "jeju-non-fisher-harvest-restriction",
+  "title": "비어업인의 포획·채취의 제한 및 조건(폐지된 고시)",
+  "evidence_grade": "extracted",
+  "extracted_by": "model",
+  "extracted_at": "2026-11-23",
+  "reviewed_at": null,
+  "source": {
+    "source_id": "JN-2025-53",
+    "document": "제주특별자치도 고시 제2025-53호(폐지 고시)",
+    "published": "2025-03-07",
+    "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+    "retrieved_at": "2026-11-23",
+    "local_text": ".local/notices/N_60576.txt",
+    "text_sha256": "a16a1438466718bb3adb04af859d9249be828ac4c18ecb160709185c5593dad4"
+  },
+  "additional_sources": [
+    {
+      "source_id": "JN-2021-86",
+      "document": "제주특별자치도 고시 제2021-86호(폐지된 고시)",
+      "published": "2021-04-09",
+      "url": "https://www.jeju.go.kr/news/news/law/jeju2.htm",
+      "retrieved_at": "2026-11-23",
+      "local_text": ".local/notices/N_43386.txt",
+      "text_sha256": "229d798080abbc1ea603d05e34c4214c5dd47c3be27d13b106bf8fbe3c6512b5"
+    },
+    {
+      "source_id": "L18",
+      "document": "수산자원관리법",
+      "provisions": [
+        "제18조"
+      ],
+      "version": "조문 시행일 2026-09-18(수집본)",
+      "retrieved_at": "2026-11-22",
+      "local_text": ".local/cards-src/jeju-non-fisher-harvest-restriction/L18.txt",
+      "text_sha256": "2f38d500399907937ae972d1219d87c5322469b2c48ee040a30ed5b284dcf58f"
+    }
+  ],
+  "obligation_type": "금지(폐지됨)",
+  "target_activity": "마을어장에서 비어업인의 수산자원 포획·채취",
+  "target_area": {
+    "src": "JN-2021-86",
+    "type": "jurisdiction",
+    "value": "제주특별자치도의 마을어장",
+    "resolvable_from_text": false,
+    "note": "마을어장의 구역은 어업권 자료가 있어야 안다.",
+    "locator": "제2021-86호 제2조",
+    "quote": "제주특별자치도 마을어장 내에서 수산자원을 포획·채취하는 비어업인에 한하여 적용한다"
+  },
+  "validity": {
+    "valid_from": "2021-04-09",
+    "valid_until": "2025-03-06",
+    "repealed_on": "2025-03-07",
+    "locator": "제2025-53호",
+    "quote": "고시는 이를 폐지한다",
+    "effective": {
+      "quote": "이 고시는 고시한 날로부터 시행한다"
+    }
+  },
+  "enforcement_status": "repealed",
+  "status_note": "고시는 2025-03-07에 폐지됐다. 폐지 뒤에는 「수산자원관리법」 제18조제1항이 정한 대통령령의 기준이 적용되는 것으로 읽힌다. 같은 조 제2항에 따른 제주 조례는 본청 자치법규 목록 1,346건에서 이름으로 찾지 못했다. '규제가 없다'고 답하지 않는다.",
+  "repeal": {
+    "locator": "제2025-53호 고시폐지 사유",
+    "summary": "「수산자원관리법」이 개정(2023-06-20)·시행(2023-12-21)되어 비어업인 관리를 조례로 정할 수 있게 됨",
+    "quote": "비어업인 관리를 지역별 특성에 맞게 조례로 제정할 수 있도록 변경됨"
+  },
+  "restricted": [
+    {
+      "src": "JN-2021-86",
+      "id": "R1",
+      "scope": "폐지된 고시가 정했던 제한(지금은 효력 없음)",
+      "locator": "제2021-86호 제3조",
+      "quote": "제3조(제한 및 조건)",
+      "acts": [],
+      "conditions": [
+        {
+          "summary": "포획·채취는 일출 전 30분부터 일몰 후 30분까지",
+          "quote": "일출 전 30분부터 일몰 후 30분내로 한정한다"
+        },
+        {
+          "summary": "변형 갈고리 등 어구와 잠수용 장비 사용 금지",
+          "quote": "잠수용 장비(공기통, 호흡기, 부력조절기, 추 등)를 사용하여서는 아니된다"
+        },
+        {
+          "summary": "신고어업인과 협업한 포획·채취 금지",
+          "quote": "신고어업인과 협업하여"
+        },
+        {
+          "summary": "어업권자가 관리·조성한 패류, 해조류, 정착성 수산동물의 포획·채취 금지",
+          "quote": "정착성 수산동물(해삼 등)을 포획"
+        }
+      ],
+      "exclusions": [
+        {
+          "summary": "낚시는 적용하지 않음",
+          "quote": "(단, 낚시 행위에 대해서는 예외)"
+        }
+      ]
+    }
+  ],
+  "current_law": {
+    "src": "L18",
+    "locator": "「수산자원관리법」 제18조",
+    "items": [
+      {
+        "summary": "비어업인은 대통령령으로 정하는 포획·채취 기준을 위반해서는 안 된다",
+        "quote": "대통령령으로 정하는 방법ㆍ수량ㆍ어구의 종류 등의 포획ㆍ채취 기준을 위반하여 수산자원을 포획ㆍ채취하여서는 아니 된다"
+      },
+      {
+        "summary": "시·도는 조례로 기준을 달리 정할 수 있다",
+        "quote": "그 시ㆍ도의 조례로 포획ㆍ채취 기준을 달리 정할 수 있다"
+      },
+      {
+        "summary": "포획·채취한 수산자원의 판매 금지",
+        "quote": "포획ㆍ채취한 수산자원을 판매하거나 판매할 목적으로 저장ㆍ운반 또는 진열하여서는 아니 된다"
+      }
+    ]
+  },
+  "penalties": [],
+  "open_questions": [
+    "대통령령(수산자원관리법 시행령)의 비어업인 포획·채취 기준은 받지 않았다.",
+    "제주에 제18조제2항에 따른 조례가 있는지. 이름에 '비어업인'이 든 조례는 없었으나 다른 조례의 조문에 들어갔을 수 있다.",
+    "벌칙(같은 법 제65조 등)은 옮기지 않았다."
+  ]
+}
