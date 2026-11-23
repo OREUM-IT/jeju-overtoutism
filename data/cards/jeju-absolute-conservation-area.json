@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-absolute-conservation-area",
+  "place_types": ["conservation-area"],
   "title": "절대보전지역에서의 행위제한",
   "evidence_grade": "extracted",
   "extracted_by": "model",

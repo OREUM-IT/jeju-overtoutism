@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-oreum-rest-year",
+  "place_types": ["oreum"],
   "title": "오름 자연휴식년제(출입제한)",
   "evidence_grade": "extracted",
   "extracted_by": "model",

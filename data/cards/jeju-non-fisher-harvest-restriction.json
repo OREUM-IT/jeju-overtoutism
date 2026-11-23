@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-non-fisher-harvest-restriction",
+  "place_types": ["coast-sea"],
   "title": "비어업인의 포획·채취의 제한 및 조건(폐지된 고시)",
   "evidence_grade": "extracted",
   "extracted_by": "model",

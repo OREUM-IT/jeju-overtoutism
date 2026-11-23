@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "jeju-oreum-vehicle-cooking-camping-2026-140",
+  "place_types": ["oreum"],
   "title": "국·공유지 오름 내 차마 출입·취사·야영 행위 제한",
   "evidence_grade": "extracted",
   "extracted_by": "model",

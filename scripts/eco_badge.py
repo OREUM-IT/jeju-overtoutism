@@ -54,9 +54,17 @@ def validate(theme, badges, evidence):
     subthemes = {s["id"] for s in theme["subthemes"]}
     verdicts = set(theme["verdict_values"])
     criteria = {c["id"] for c in badges["criteria"]}
+    types_file = Path("data/place-types.json")
+    place_types = {t["id"] for t in json.loads(types_file.read_text(encoding="utf-8"))["types"]} if types_file.exists() else None
     for group, items in (("items", theme["items"]), ("excluded", theme["excluded"])):
         for item in items:
             where = f"{group}/{item['id']}"
+            if place_types is not None:
+                if not item.get("place_types"):
+                    problems.append(f"{where}: 장소 유형(place_types)이 없음")
+                for type_id in item.get("place_types", []):
+                    if type_id not in place_types:
+                        problems.append(f"{where}: 없는 장소 유형 {type_id}")
             if group == "items" and item.get("subtheme") not in subthemes:
                 problems.append(f"{where}: 없는 하위 테마 {item.get('subtheme')}")
             if not item.get("regulation_checks"):

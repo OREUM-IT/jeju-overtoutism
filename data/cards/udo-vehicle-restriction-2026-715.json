@@ -1,6 +1,7 @@
 {
   "schema_version": "0.1-draft",
   "card_id": "udo-vehicle-restriction-2026-715",
+  "place_types": ["island", "mobility"],
   "title": "우도면 내 일부자동차 운행(통행)제한 명령",
   "evidence_grade": "extracted",
   "extracted_by": "model",
