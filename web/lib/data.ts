@@ -2,7 +2,7 @@ import repoData from '@/generated/repo-data.json';
 import type { RegulationCard, SourceRow } from './types';
 
 // generated/repo-data.json은 scripts/sync-data.mjs가 저장소의 data/에서 만든다.
-// 앱은 이 사본만 읽는다. 수집기·Agent가 서면 같은 모양을 HTTP로 받게 바꾼다(docs/07 7절).
+// 앱은 이 사본만 읽는다. 수집기·Agent가 서면 같은 모양을 HTTP로 받게 바꾼다(docs/10 7절).
 const data = repoData as unknown as { cards: RegulationCard[]; sources: SourceRow[] };
 
 export const CARDS: readonly RegulationCard[] = data.cards;
@@ -10,6 +10,7 @@ export const SOURCES: readonly SourceRow[] = data.sources;
 
 export const UDO_VEHICLE_CARD_ID = 'udo-vehicle-restriction-2026-715';
 export const CONSERVATION_CARD_ID = 'jeju-absolute-conservation-area';
+export const RELATIVE_CONSERVATION_CARD_ID = 'jeju-relative-conservation-area';
 
 export function getCard(id: string): RegulationCard | undefined {
   return CARDS.find((card) => card.card_id === id);

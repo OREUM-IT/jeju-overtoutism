@@ -1,8 +1,8 @@
 // ② 기획 점검: 절대보전지역 카드(제주특별법 제355조 등 + 보전지역 관리 조례)로 기획안을 판정한다.
-// 판정은 docs/05 5절의 예시를 규칙으로 옮긴 것이다. 위치는 조문으로 정할 수 없으므로
+// 판정은 docs/05 6절의 예시를 규칙으로 옮긴 것이다. 위치는 조문으로 정할 수 없으므로
 // 사용자가 확인했다고 입력하지 않으면 "그 위치가 절대보전지역 안이라면"이라는 전제를 붙인다.
 
-import { CONSERVATION_CARD_ID, getSource, requireCard } from '../data';
+import { CONSERVATION_CARD_ID, getCard, getSource, RELATIVE_CONSERVATION_CARD_ID, requireCard } from '../data';
 import { itemNo } from '../format';
 import { first, labelOf, pick, type Option, type ParamGetter } from '../params';
 import type { OrdinanceItem, PermitException, RegulationCard } from '../types';
@@ -231,14 +231,27 @@ function privateFacility(card: RegulationCard, what: string): Branch {
   };
 }
 
-/** 우도 기획에서 함께 볼 수집 대상(카드 없음). 작성자가 고른 것이며 판정하지 않는다. */
-function relatedSources(activity: Activity) {
-  const ids = ['N02', 'N03', 'N04'];
+/** 우도 기획에서 함께 볼 규제. 작성자가 고른 것이며 이 화면에서는 판정하지 않는다. */
+function relatedSources(activity: Activity): CheckResult['related'] {
+  const cards: CheckResult['related'] = [];
+  const relative = getCard(RELATIVE_CONSERVATION_CARD_ID);
+  if (relative) {
+    const area = relative.target_area?.designated_areas?.udo?.relative_m2;
+    cards.push({
+      id: relative.card_id,
+      name: relative.title,
+      check_status: relative.evidence_grade,
+      note: `상대보전지역${typeof area === 'number' ? `(우도면 ${area.toLocaleString('ko-KR')}㎡)` : ''}은 허가 범위가 다르다. 이 화면은 절대보전지역 카드로만 판정한다`,
+      href: `/cards/${relative.card_id}`,
+    });
+  }
+  const ids = ['N02', 'N03'];
   if (activity === 'beach_kiosk' || activity === 'coastal_building') ids.push('L17');
-  return ids
+  const sources = ids
     .map((id) => getSource(id))
     .filter((row): row is NonNullable<typeof row> => Boolean(row))
     .map((row) => ({ id: row.id, name: row.name, check_status: row.check_status, note: row.udo_relevance }));
+  return [...cards, ...sources];
 }
 
 export function checkPlan(input: PlanInput, today: string, card: RegulationCard = requireCard(CONSERVATION_CARD_ID)): CheckResult {
@@ -253,7 +266,7 @@ export function checkPlan(input: PlanInput, today: string, card: RegulationCard 
     notes.push(`${card.grandfathering.summary}(${card.grandfathering.locator ?? '근거 위치 없음'}).`);
   }
 
-  const keywords = [...(branch.questions ?? []), ...(inArea ? ['우도에 절대보전지역'] : [])];
+  const keywords = [...(branch.questions ?? []), ...(inArea ? ['필지', '우도에 절대보전지역'] : [])];
 
   return {
     kind: 'conservation-plan',

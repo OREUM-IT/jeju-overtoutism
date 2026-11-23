@@ -1,4 +1,4 @@
-// 절대보전지역 카드의 기획 점검 규칙. 정답은 docs/05 5절의 예시 표에서 가져온다.
+// 절대보전지역 카드의 기획 점검 규칙. 정답은 docs/05 6절의 예시 표에서 가져온다.
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { ACTIVITIES, ACTORS, checkPlan, parsePlan, type PlanInput } from '../lib/checks/conservation-plan';
@@ -7,7 +7,7 @@ import { fromSearchParams } from '../lib/params';
 const TODAY = '2026-11-23';
 const run = (over: Partial<PlanInput>) => checkPlan({ activity: 'guided_program', actor: 'private', location: 'unknown', ...over }, TODAY);
 
-describe('docs/05 5절 절대보전지역 카드 예시 표', () => {
+describe('docs/05 6절 절대보전지역 카드 예시 표', () => {
   const rows: [string, Partial<PlanInput>, string, string[]][] = [
     ['제주자치도가 산책로를 설치', { activity: 'trail', actor: 'public' }, '허가 대상', ['E1']],
     ['학술 조사를 겸한 생태 모니터링', { activity: 'monitoring' }, '허가 대상', ['E3']],
@@ -78,6 +78,16 @@ describe('위치와 절차', () => {
     const questions = run({ activity: 'guided_program' }).open_questions;
     assert.ok(questions.some((q) => q.includes('유사한 행위')));
     assert.ok(questions.some((q) => q.includes('탐방·해설')));
+  });
+
+  it('상대보전지역 카드를 함께 볼 규제로 잇는다', () => {
+    const related = run({ activity: 'deck' }).related.find((r) => r.id === 'jeju-relative-conservation-area');
+    assert.equal(related?.href, '/cards/jeju-relative-conservation-area');
+    assert.match(related?.note ?? '', /15,870㎡/);
+  });
+
+  it('우도면 절대보전지역이 어느 필지인지에 관한 열린 질문을 보인다', () => {
+    assert.ok(run({ activity: 'monitoring' }).open_questions.some((q) => q.includes('필지')));
   });
 
   it('해수욕장·해안 기획에는 공유수면법(L17)을 함께 볼 규제로 보인다', () => {

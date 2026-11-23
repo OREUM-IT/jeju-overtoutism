@@ -87,16 +87,22 @@ function section(id: string, title: string, parts: Partial<Omit<ReportSection, '
   return { id, title, lead: parts.lead ?? null, statements: parts.statements ?? [], tables: parts.tables ?? [], ideas: parts.ideas ?? [] };
 }
 
+/** 우도에 걸리는 카드: 본문에 우도가 나오거나 대상 지역이 제주 전역인 카드 */
+export function udoRelatedCards(): RegulationCard[] {
+  return CARDS.filter((card) => JSON.stringify(card).includes('우도') || /전역/.test(card.target_area?.value ?? ''));
+}
+
 function cardTable(): ReportTable {
+  const cards = udoRelatedCards();
   return {
-    caption: '규제 카드',
+    caption: `우도에 걸리는 규제 카드 ${cards.length}건(전체 ${CARDS.length}건 가운데 본문에 우도가 나오거나 대상 지역이 제주 전역인 것)`,
     columns: ['규제', '원문', '시행 상태', '기간', '근거 등급', '추출일'],
-    rows: CARDS.map((card) => [
+    rows: cards.map((card) => [
       card.title,
       card.source.document,
       STATUS_LABEL[card.enforcement_status ?? ''] ?? card.enforcement_status ?? '표시 없음',
-      card.validity && (card.validity.valid_from || card.validity.valid_until)
-        ? dateRange(card.validity.valid_from, card.validity.valid_until)
+      card.validity && (card.validity.valid_from || card.validity.valid_until || card.validity.until)
+        ? dateRange(card.validity.valid_from, card.validity.valid_until ?? card.validity.until)
         : '기간 없음',
       GRADE_LABEL[card.evidence_grade] ?? card.evidence_grade,
       card.extracted_at ?? '없음',
@@ -147,10 +153,36 @@ function reportedExtension(): string {
   return until ? `보도상으로는 ${until}까지 연장됐다. ` : '';
 }
 
+function udoAbsoluteArea(card: RegulationCard): string | null {
+  const m2 = card.target_area?.designated_areas?.udo?.absolute_m2;
+  return typeof m2 === 'number' ? `${m2.toLocaleString('ko-KR')}㎡` : null;
+}
+
+function udoAreaCite(card: RegulationCard): Citation[] {
+  const areas = card.target_area?.designated_areas;
+  const udo = areas?.udo;
+  return udo ? [citation(card, '우도면 지정 면적', udo.summary, udo.quote, udo.locator ?? areas?.locator, udo.src ?? areas?.src)] : [];
+}
+
+/** 우도면의 보전지역 지정 현황. 고시에서 읽은 면적이 카드에 있으면 사실로, 없으면 확인 필요로 적는다. */
+function udoAreaStatements(card: RegulationCard): Statement[] {
+  const udo = card.target_area?.designated_areas?.udo;
+  if (!udo) {
+    return [unknown('우도의 절대·상대보전지역 지정 현황을 카드로 확인하지 못했다. 보전지역 카드로는 우도의 특정 위치를 판정할 수 없다.', [areaCite(card)], ['N04'])];
+  }
+  return [
+    fact(`${udo.summary}.`, udoAreaCite(card), ['N04']),
+    unknown('그 면적이 어느 필지인지는 지형도면이 있어야 안다. 그래서 보전지역 카드로는 우도의 특정 위치를 판정하지 않는다.', [areaCite(card)]),
+  ];
+}
+
 function unreadProvisions(card: RegulationCard): string[] {
   return (card.legal_basis?.provisions ?? [])
-    .filter((p) => !p.text_read)
-    .map((p) => `「${getSource(p.source_id)?.name ?? p.source_id}」 ${p.provision}`);
+    .filter((p) => p.text_read === false)
+    .map((p) => {
+      const id = p.source_id ?? p.src ?? '';
+      return `「${getSource(id)?.name ?? id}」 ${p.provision}`;
+    });
 }
 
 function ideas(today: string): ReportIdea[] {
@@ -262,7 +294,7 @@ function policyReport(today: string, cards: { udo: RegulationCard; cons: Regulat
 
   return [
     section('status', '1. 규제 현황', {
-      lead: '우도에 적용되는 규제 가운데 카드로 만든 2건과 수집 대상 목록의 확인 상태다.',
+      lead: '우도에 걸리는 규제 카드와 수집 대상 목록의 확인 상태다.',
       tables: [cardTable(), sourceStatusTable()],
       statements: [
         fact(
@@ -292,11 +324,7 @@ function policyReport(today: string, cards: { udo: RegulationCard; cons: Regulat
           [],
           ['N07'],
         ),
-        unknown(
-          '우도의 절대·상대·관리보전지역 지정 현황을 찾지 못했다. 보전지역 카드로는 우도의 특정 위치를 판정할 수 없다.',
-          [areaCite(cons)],
-          ['N04'],
-        ),
+        ...udoAreaStatements(cons),
         unknown('방문객 수·혼잡도 같은 부하 지표는 아직 연결하지 않았다(6단계). 이 보고서는 혼잡이나 효과를 수치로 쓰지 않는다.'),
         measure(
           '교통약자 동반(P1)·우도 숙박(P3) 방문객의 반입 허용과 필요한 증빙을 방문 전에 알린다.',
@@ -332,7 +360,11 @@ function businessReport(today: string, cards: { udo: RegulationCard; cons: Regul
     }),
     section('checklist', '2. 사전 확인 목록', {
       statements: [
-        unknown('기획 장소가 절대보전지역 안인지 지정 고시와 지형도면으로 먼저 확인한다. 이 서비스는 구역 데이터를 연결하지 않았다.', [areaCite(cons)], ['N04']),
+        unknown(
+          `기획 장소가 절대보전지역 안인지 지정 고시와 지형도면으로 먼저 확인한다. ${udoAbsoluteArea(cons) ? `우도면에도 절대보전지역 ${udoAbsoluteArea(cons)}가 있다. ` : ''}이 서비스는 구역 데이터를 연결하지 않았다.`,
+          [areaCite(cons), ...udoAreaCite(cons)],
+          ['N04'],
+        ),
         fact('절대보전지역에서 허가 대상인 행위는 신청서와 첨부 서류를 내고 도지사의 허가를 받는다. 특별한 사유가 없으면 5일 이내에 처분하며 심의·협의 기간은 빼고 센다.', procedureCites(cons)),
         fact('허가 없이 하면 2년 이하의 징역 또는 2천만원 이하의 벌금, 그리고 원상회복 명령 대상이다.', penaltyCites(cons)),
         fact('우도 안에서 대여 목적으로 운행하는 원동기장치자전거·개인형 이동장치는 운행제한 대상이다. 이동수단 대여 사업을 기획할 때 먼저 본다.', [udoCite.cond(udo, 'R2-나')]),

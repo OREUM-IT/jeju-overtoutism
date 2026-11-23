@@ -1,4 +1,4 @@
-// API 응답 공통 모양. docs/07 7절의 Agent 연동 계약 초안을 따른다.
+// API 응답 공통 모양. docs/10 7절의 Agent 연동 계약 초안을 따른다.
 
 export function invalid(messages: string[]) {
   return Response.json({ error: 'invalid_input', messages }, { status: 400 });

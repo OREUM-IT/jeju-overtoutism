@@ -1,4 +1,4 @@
-// 판정 값과 최종 판정 규칙(docs/07 4절).
+// 판정 값과 최종 판정 규칙(docs/10 4절).
 // 화면은 이 결과를 그대로 그린다. 판정 규칙을 화면에서 다시 계산하지 않는다.
 
 import { won, wonRange } from './format';
@@ -49,6 +49,8 @@ export const GRADE_LABEL: Record<string, string> = {
 export const STATUS_LABEL: Record<string, string> = {
   in_force: '시행',
   unconfirmed: '현재 효력 미확인',
+  in_force_until_notice: '별도 공고 때까지 시행',
+  varies: '대상마다 다름',
   suspended: '유예',
   discussed: '논의',
   repealed: '폐지',
@@ -132,7 +134,8 @@ export interface CheckResult {
   penalties: PenaltyView[];
   open_questions: string[];
   notes: string[];
-  related: { id: string; name: string; check_status: string; note: string }[];
+  /** 함께 볼 규제. href가 있으면 규제 카드가 있는 것이고, 없으면 수집 대상 목록의 항목이다 */
+  related: { id: string; name: string; check_status: string; note: string; href?: string }[];
   as_of: {
     today: string;
     card_extracted_at: string | null;
@@ -202,12 +205,18 @@ export function penaltyViews(card: RegulationCard): PenaltyView[] {
     type: p.type,
     violation: p.violation,
     basis: p.basis ?? null,
-    summary: p.summary ?? (typeof p.amount_krw === 'number' ? `${p.type} ${won(p.amount_krw)}` : p.type),
+    summary:
+      p.summary ??
+      (typeof p.amount_krw === 'number'
+        ? `${p.type} ${won(p.amount_krw)}`
+        : typeof p.amount_krw_max === 'number'
+          ? `${p.type} ${won(p.amount_krw_max)} 이하`
+          : p.type),
     lines: (p.amount_krw_range ?? []).map((r) => ({
       label: `${r.vehicle}: ${wonRange(r.min, r.max)}`,
       quote: r.quote ?? null,
     })),
-    quote: p.quote ?? p.applies_quote?.quote ?? null,
+    quote: p.quote ?? p.applies_quote?.quote ?? p.law?.quote ?? null,
     locator: p.locator ?? null,
     document: documentFor(card),
   }));
@@ -235,7 +244,7 @@ export interface FinalContext {
 }
 
 /**
- * 최종 판정 규칙(docs/07 4.2절).
+ * 최종 판정 규칙(docs/10 4.2절).
  * 아래 조건 중 하나라도 걸리면 최종 판정은 "확인 필요"다. 예비 판정은 그대로 보인다.
  * 1. 카드가 verified가 아니다.
  * 2. 판정 기준일이 카드의 유효 기간 밖이다.

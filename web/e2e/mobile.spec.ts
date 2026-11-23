@@ -20,3 +20,12 @@ test('휴대폰에서는 폼 아래 막대에 판정 요약이 보이고 누르�
   await summary.getByRole('link').click();
   await expect(page.getByTestId('final')).toBeInViewport();
 });
+
+test('카드 상세 화면은 모두 가로로 넘치지 않는다', async ({ page, request }) => {
+  const { cards } = (await (await request.get('/api/cards')).json()) as { cards: { card_id: string }[] };
+  for (const card of cards) {
+    await page.goto(`/cards/${card.card_id}`);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(overflow, card.card_id).toBeLessThanOrEqual(0);
+  }
+});

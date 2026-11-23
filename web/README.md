@@ -1,6 +1,6 @@
 # 제주 그린체크(가칭) 화면 시안
 
-[서비스 기획(docs/07)](../docs/07-service-plan.md)을 따라 만든 Next.js 앱이다. 저장소의 규제 카드(`data/cards/*.json`)를 읽어 여행자·사업자·정책 담당자에게 판정과 근거를 보여 준다.
+[서비스 기획(docs/10)](../docs/10-service-plan.md)을 따라 만든 Next.js 앱이다. 저장소의 규제 카드(`data/cards/*.json`)를 읽어 여행자·사업자·정책 담당자에게 판정과 근거를 보여 준다.
 
 **시안이다.** 두 카드 모두 검수 전(`extracted`)이므로 최종 판정은 모두 "확인 필요"로 나오고, 카드 문언에 따른 예비 판정을 함께 보인다. 판정은 법률 자문이 아니다.
 
@@ -23,7 +23,7 @@
 
 ## API
 
-[docs/07 7절](../docs/07-service-plan.md)의 Agent 연동 계약을 시험 구현한 것이다. 수집기·Agent가 생기면 같은 모양으로 바꿔 끼운다.
+[docs/10 7절](../docs/10-service-plan.md)의 Agent 연동 계약을 시험 구현한 것이다. 수집기·Agent가 생기면 같은 모양으로 바꿔 끼운다.
 
 | 엔드포인트 | 내용 |
 |---|---|
@@ -55,7 +55,7 @@ npm run dev
 npm test
 ```
 
-단위 시험(`tests/`)은 판정 규칙을 docs/05 5절의 예시 표와 맞춰 보고, 판정·보고서가 내놓는 인용문이 모두 카드에 글자 그대로 있는지, 카드를 검수(`verified`)하면 최종 판정이 풀리는지 본다.
+단위 시험(`tests/`)은 판정 규칙을 docs/05 6절의 예시 표와 맞춰 보고, 판정·보고서가 내놓는 인용문이 모두 카드에 글자 그대로 있는지, 카드를 검수(`verified`)하면 최종 판정이 풀리는지 본다.
 
 ```bash
 npm run build
@@ -64,7 +64,9 @@ npm run test:e2e
 
 화면 시험(`e2e/`)은 빌드 결과를 `next start`로 띄워 데스크톱·휴대폰 크기에서 확인한다. Playwright 1.63 브라우저가 필요하다.
 
-## Vercel 배포
+## 배포
+
+지금 방침은 별도 배포 대신 oreumit.com 웹앱([OREUM-IT/jeju-tour](https://github.com/OREUM-IT/jeju-tour))의 "데이터 출처" 옆 섹션으로 먼저 붙이는 것이다([docs/10 11절](../docs/10-service-plan.md)). 이 앱은 판정 규칙과 화면의 기준 구현으로 둔다. 따로 띄워 볼 때는 아래처럼 Vercel에 올릴 수 있다.
 
 1. Vercel에서 이 저장소를 가져온다(Import Project).
 2. **Root Directory**를 `web`으로 둔다. Framework Preset은 Next.js로 잡힌다.
@@ -77,7 +79,7 @@ npm run test:e2e
 web/
   app/                 화면과 API(App Router)
   components/          판정 결과, 보고서, 폼 부품
-  lib/verdict.ts       판정 값과 최종 판정 규칙(docs/07 4절)
+  lib/verdict.ts       판정 값과 최종 판정 규칙(docs/10 4절)
   lib/checks/          카드별 판정 규칙(우도 운행제한, 절대보전지역)
   lib/report.ts        지역 진단 보고서(독자 3종)
   scripts/sync-data.mjs  data/ → generated/repo-data.json

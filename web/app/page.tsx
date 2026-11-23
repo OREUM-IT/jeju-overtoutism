@@ -34,6 +34,7 @@ export default function HomePage() {
   const cons = requireCard(CONSERVATION_CARD_ID);
   const followUp = getSource('N07');
   const zones = getSource('N04');
+  const udoArea = cons.target_area?.designated_areas?.udo;
   const unverified = CARDS.filter((card) => card.evidence_grade !== 'verified').length;
 
   return (
@@ -116,11 +117,18 @@ export default function HomePage() {
                 제주특별법 제355조 등({cons.source.version?.split(',')[0] ?? '판본 표기 없음'} 판본)과 「보전지역 관리에 관한 조례」
               </dd>
             </div>
+            {udoArea ? (
+              <div className="flex gap-2">
+                <dt className="w-20 shrink-0 text-stone-500">우도면</dt>
+                <dd>
+                  절대보전지역 {udoArea.absolute_m2?.toLocaleString('ko-KR')}㎡ · 상대보전지역 {udoArea.relative_m2?.toLocaleString('ko-KR')}㎡
+                  {zones ? <span className="text-stone-600"> (수집 대상 {zones.id})</span> : null}
+                </dd>
+              </div>
+            ) : null}
             <div className="flex gap-2">
               <dt className="w-20 shrink-0 text-stone-500">모름</dt>
-              <dd>
-                우도에 절대보전지역이 지정되어 있는지. {zones ? <span className="text-stone-600">찾지 못함(수집 대상 {zones.id}).</span> : null}
-              </dd>
+              <dd>{udoArea ? '그 면적이 어느 필지인지. 지형도면이 있어야 압니다.' : '우도에 절대보전지역이 지정되어 있는지.'}</dd>
             </div>
             <div className="flex gap-2">
               <dt className="w-20 shrink-0 text-stone-500">시행 상태</dt>

@@ -31,10 +31,9 @@ test('POST /api/check/plan', async ({ request }) => {
 
 test('GET /api/cards, /api/cards/{id}, /api/report', async ({ request }) => {
   const list = await (await request.get('/api/cards')).json();
-  expect(list.cards.map((c: { card_id: string }) => c.card_id).sort()).toEqual([
-    'jeju-absolute-conservation-area',
-    'udo-vehicle-restriction-2026-715',
-  ]);
+  const ids = list.cards.map((c: { card_id: string }) => c.card_id);
+  expect(ids).toContain('jeju-absolute-conservation-area');
+  expect(ids).toContain('udo-vehicle-restriction-2026-715');
   const card = await request.get('/api/cards/udo-vehicle-restriction-2026-715');
   expect((await card.json()).schema_version).toBe('0.1-draft');
   expect((await request.get('/api/cards/nope')).status()).toBe(404);

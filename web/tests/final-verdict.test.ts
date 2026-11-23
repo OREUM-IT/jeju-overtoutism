@@ -1,4 +1,4 @@
-// 최종 판정 규칙(docs/07 4.2절). 카드가 검수되면 "확인 필요"가 풀리는지도 본다.
+// 최종 판정 규칙(docs/10 4.2절). 카드가 검수되면 "확인 필요"가 풀리는지도 본다.
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { checkPlan } from '../lib/checks/conservation-plan';

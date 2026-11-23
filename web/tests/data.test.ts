@@ -24,10 +24,17 @@ describe('저장소 data/ 동기화', () => {
     }
   });
 
-  it('카드의 인용문 수가 docs/05 1절의 표와 같다', () => {
-    const count = (id: string) => collectQuotes(CARDS.find((c) => c.card_id === id)).length;
-    assert.equal(count('udo-vehicle-restriction-2026-715'), 33);
-    assert.equal(count('jeju-absolute-conservation-area'), 72);
+  it('인용문을 scripts/check_card_quotes.py와 같은 규칙("quote" 키의 문자열)으로 센다', () => {
+    for (const file of readdirSync(path.join(dataDir, 'cards')).filter((f) => f.endsWith('.json'))) {
+      const raw = readFileSync(path.join(dataDir, 'cards', file), 'utf8');
+      const expected = raw.match(/"quote"\s*:\s*"/g)?.length ?? 0;
+      const card = CARDS.find((c) => `${c.card_id}.json` === file);
+      assert.equal(collectQuotes(card).length, expected, file);
+    }
+  });
+
+  it('docs/05 1절 표의 인용문 수와 같다(운행제한 33개)', () => {
+    assert.equal(collectQuotes(CARDS.find((c) => c.card_id === 'udo-vehicle-restriction-2026-715')).length, 33);
   });
 
   it('수집 대상 목록을 모두 읽고 ID가 겹치지 않는다', () => {

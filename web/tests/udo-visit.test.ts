@@ -1,4 +1,4 @@
-// 우도 차량 운행제한 카드의 판정 규칙. 정답은 docs/05 5절의 예시 표와 카드 문언에서 가져온다.
+// 우도 차량 운행제한 카드의 판정 규칙. 정답은 docs/05 6절의 예시 표와 카드 문언에서 가져온다.
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { checkVisit, parseVisit, visitQuery, type VisitInput } from '../lib/checks/udo-visit';
@@ -18,7 +18,7 @@ const BASE: VisitInput = {
 const run = (over: Partial<VisitInput>) => checkVisit({ ...BASE, ...over }, TODAY);
 const reasons = (over: Partial<VisitInput>) => run(over).final.reasons.map((r) => r.code);
 
-describe('docs/05 5절 운행제한 카드 예시 표', () => {
+describe('docs/05 6절 운행제한 카드 예시 표', () => {
   const rows: [string, Partial<VisitInput>, string, string[]][] = [
     ['본섬 업체의 휘발유 렌터카로 당일 방문', {}, '저촉', ['R1-다']],
     ['본섬 업체의 전기 렌터카로 당일 방문', { fuel: 'electric' }, '제한 대상 아님', ['R1-다 단서']],

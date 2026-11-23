@@ -116,15 +116,23 @@ test('보고서: 독자별로 절이 다르고 인용 번호가 인용 목록으
   await expect(page.locator('[data-testid^="idea-"]')).toHaveCount(0);
 });
 
-test('규제 카드: 목록과 상세, 인용문 수는 docs/05와 같다', async ({ page }) => {
+test('규제 카드: 저장소의 카드를 모두 싣고, 상세 화면의 인용문 수가 API와 같다', async ({ page, request }) => {
+  const { cards } = (await (await request.get('/api/cards')).json()) as { cards: { card_id: string; title: string; quote_count: number }[] };
+  expect(cards.length).toBeGreaterThanOrEqual(2);
   await page.goto('/cards');
-  await expect(page.getByTestId('card-list').getByRole('link')).toHaveCount(2);
-  await page.getByRole('link', { name: /우도면 내 일부자동차/ }).click();
+  await expect(page.getByTestId('card-list').getByRole('link')).toHaveCount(cards.length);
+  for (const card of cards) {
+    const response = await page.goto(`/cards/${card.card_id}`);
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(card.title);
+    await expect(page.getByTestId('quote-count')).toHaveText(`인용문 ${card.quote_count}개`);
+    await expect(page.getByText('undefined')).toHaveCount(0);
+  }
+  await page.goto('/cards/udo-vehicle-restriction-2026-715');
   await expect(page.getByTestId('quote-count')).toHaveText('인용문 33개');
-  await expect(page.getByRole('heading', { name: /제한 대상/ })).toBeVisible();
   await page.goto('/cards/jeju-absolute-conservation-area');
-  await expect(page.getByTestId('quote-count')).toHaveText('인용문 72개');
   await expect(page.getByText('관광·탐방 관련').first()).toBeVisible();
+  await expect(page.getByText('우도면 최초 지정')).toBeVisible();
   const response = await page.goto('/cards/no-such-card');
   expect(response?.status()).toBe(404);
   await expect(page.getByRole('heading', { name: '찾는 화면이 없습니다' })).toBeVisible();

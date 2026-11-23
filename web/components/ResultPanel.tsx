@@ -163,19 +163,31 @@ export function ResultPanel({ result }: { result: CheckResult }) {
       ) : null}
 
       {result.related.length > 0 ? (
-        <Panel title="함께 볼 규제 (카드 없음 · 판정하지 않음)">
+        <Panel title="함께 볼 규제 (이 화면에서는 판정하지 않음)">
           <ul className="space-y-2">
-            {result.related.map((r) => (
-              <li key={r.id}>
-                <span className="chip mr-2">{r.id}</span>
-                <span className="font-medium text-stone-900">{r.name}</span>
-                <span className="block text-xs text-stone-500">
-                  {r.note} · 확인 상태: {CHECK_STATUS_LABEL[r.check_status] ?? r.check_status}
-                </span>
-              </li>
-            ))}
+            {result.related.map((r) =>
+              r.href ? (
+                <li key={r.id}>
+                  <span className="chip mr-2">규제 카드</span>
+                  <Link href={r.href} className="link">
+                    {r.name}
+                  </Link>
+                  <span className="block text-xs text-stone-500">
+                    {r.note} · 근거 등급: {GRADE_LABEL[r.check_status] ?? r.check_status}
+                  </span>
+                </li>
+              ) : (
+                <li key={r.id}>
+                  <span className="chip mr-2">{r.id}</span>
+                  <span className="font-medium text-stone-900">{r.name}</span>
+                  <span className="block text-xs text-stone-500">
+                    {r.note} · 확인 상태: {CHECK_STATUS_LABEL[r.check_status] ?? r.check_status}
+                  </span>
+                </li>
+              ),
+            )}
           </ul>
-          <p className="text-xs text-stone-500">작성자가 고른 후보이며, 수집 대상 목록(data/udo-regulation-sources.csv)의 항목입니다.</p>
+          <p className="text-xs text-stone-500">작성자가 고른 후보입니다. 카드가 없는 것은 수집 대상 목록(data/udo-regulation-sources.csv)의 항목입니다.</p>
         </Panel>
       ) : null}
 

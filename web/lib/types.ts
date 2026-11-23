@@ -22,7 +22,7 @@ export interface Definition {
 }
 
 export interface RestrictedCondition {
-  id: string;
+  id?: string;
   summary: string;
   quote?: string;
   exclusions?: Exclusion[];
@@ -32,10 +32,14 @@ export interface RestrictedCondition {
 export interface RestrictedItem {
   id: string;
   scope: string;
+  src?: string;
   locator?: string;
   quote?: string;
   acts?: string[];
   conditions?: RestrictedCondition[];
+  /** 항목 전체에 붙는 단서(예: 비어업인 포획·채취 제한) */
+  exclusions?: Exclusion[];
+  detail?: QuoteBlock;
 }
 
 export interface PermittedItem {
@@ -59,6 +63,8 @@ export interface PermitException {
   summary: string;
   locator?: string;
   quote?: string;
+  /** 다른 카드의 항목을 그대로 가져올 때 그 항목(예: 상대보전지역 E1 → 절대보전지역 E1) */
+  refers_to?: string;
   delegated_to?: string;
   detail?: {
     src?: string;
@@ -84,7 +90,11 @@ export interface Penalty {
   type: string;
   summary?: string;
   amount_krw?: number;
+  /** 상한만 정한 과태료 등 */
+  amount_krw_max?: number;
   amount_krw_range?: PenaltyRange[];
+  /** 벌칙의 근거 법령 조문 */
+  law?: { src?: string; locator?: string; quote?: string };
   imprisonment_max_years?: number;
   fine_max_krw?: number;
   locator?: string;
@@ -115,6 +125,17 @@ export interface SourceDoc {
   text_sha256?: string;
 }
 
+/** 지정 고시에서 읽은 면적(㎡) */
+export interface AreaFigure {
+  summary: string;
+  absolute_m2?: number;
+  relative_m2?: number;
+  quote?: string;
+  src?: string;
+  locator?: string;
+  published?: string;
+}
+
 export interface DesignationCriterion extends QuoteBlock {
   id: string;
   delegated_to?: string;
@@ -134,7 +155,8 @@ export interface RegulationCard {
   legal_basis?: {
     locator?: string;
     quote?: string;
-    provisions?: { source_id: string; provision: string; text_read: boolean }[];
+    /** 카드마다 모양이 다르다: { source_id, provision, text_read } 또는 { src, provision, summary, quote } */
+    provisions?: { source_id?: string; src?: string; provision: string; text_read?: boolean; summary?: string; quote?: string }[];
   };
   obligation_type?: string;
   target_activity?: string;
@@ -146,6 +168,14 @@ export interface RegulationCard {
     locator?: string;
     quote?: string;
     notice_requirements?: QuoteBlock & { map?: { quote: string } };
+    designated_areas?: {
+      src?: string;
+      locator?: string;
+      note?: string;
+      jeju_total?: AreaFigure;
+      udo?: AreaFigure;
+      udo_first_designation?: AreaFigure;
+    };
   };
   designation?: {
     authority?: string;
@@ -155,6 +185,9 @@ export interface RegulationCard {
   validity?: {
     valid_from: string | null;
     valid_until: string | null;
+    /** 끝나는 날이 날짜가 아닐 때의 문언(예: 별도 공고 시까지) */
+    until?: string;
+    repealed_on?: string;
     locator?: string;
     quote?: string;
     note?: string;
@@ -192,7 +225,7 @@ export interface RegulationCard {
     matters?: { law: string; ordinance: string; filled_in: string }[];
   }[];
   penalties?: Penalty[];
-  related?: { relation: string; source_id?: string; note: string }[];
+  related?: { relation: string; source_id?: string; card_id?: string; note: string; locator?: string; quote?: string }[];
   open_questions?: string[];
 }
 
