@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>규제 Agent 시험 화면</title>
+<style>
+  :root { --bg: #f6f7f5; --panel: #ffffff; --text: #1c2420; --muted: #5d6a63; --line: #d9dfda; --accent: #1f6f54;
+          --fact: #1f6f54; --unknown: #9a5b00; --meta: #55606a; --blocked: #a32d2d; --quote: #eef3ef; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #131715; --panel: #1b211e; --text: #e6ebe7; --muted: #9aa8a0; --line: #2c3530; --accent: #6fcaa6;
+            --fact: #6fcaa6; --unknown: #e3ac55; --meta: #a3adb6; --blocked: #f08a8a; --quote: #222a26; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, "Malgun Gothic", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p.lead { margin: 0 0 16px; color: var(--muted); font-size: 13px; }
+  form { display: flex; flex-wrap: wrap; gap: 8px; }
+  input[type=text] { flex: 1 1 280px; min-width: 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px;
+                     background: var(--panel); color: var(--text); font: inherit; }
+  input[type=date] { padding: 10px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--text); font: inherit; }
+  button { padding: 10px 16px; border: 0; border-radius: 8px; background: var(--accent); color: var(--bg); font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: .5; cursor: default; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 20px; }
+  .chips button { background: transparent; color: var(--accent); border: 1px solid var(--line); font-weight: 400; padding: 5px 10px; font-size: 13px; }
+  .status { color: var(--muted); font-size: 13px; margin: 0 0 12px; overflow-wrap: anywhere; }
+  .item { background: var(--panel); border: 1px solid var(--line); border-left-width: 4px; border-radius: 8px; padding: 10px 12px; margin: 0 0 8px; }
+  .item.fact { border-left-color: var(--fact); } .item.unknown { border-left-color: var(--unknown); }
+  .item.meta, .item.measure { border-left-color: var(--meta); } .item.blocked { border-left-color: var(--blocked); }
+  .kind { font-size: 12px; font-weight: 700; margin-right: 6px; }
+  .fact .kind { color: var(--fact); } .unknown .kind { color: var(--unknown); } .meta .kind, .measure .kind { color: var(--meta); } .blocked .kind { color: var(--blocked); }
+  .text { overflow-wrap: anywhere; }
+  .quote { margin: 6px 0 0; padding: 6px 8px; background: var(--quote); border-radius: 6px; font-size: 13px; overflow-wrap: anywhere; }
+  .quote small, .warn { color: var(--muted); font-size: 12px; }
+  .warn { margin: 4px 0 0; }
+  .foot { color: var(--muted); font-size: 12px; margin-top: 16px; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <h1>규제 Agent 시험 화면</h1>
+  <p class="lead">이 컴퓨터에서 시험할 때만 뜨는 화면이다. 답은 규제 카드의 인용문과 함께 나오고, 인용을 확인하지 못한 서술은 뺀다.</p>
+  <form id="form">
+    <input id="question" type="text" maxlength="500" placeholder="예: 우도에 렌터카 가져가도 되나" aria-label="질문" required>
+    <input id="date" type="date" aria-label="기준일">
+    <button id="send" type="submit">묻기</button>
+  </form>
+  <div class="chips" id="chips"></div>
+  <p class="status" id="status" role="status"></p>
+  <div id="answer"></div>
+  <p class="foot" id="foot"></p>
+</main>
+<script>
+  const SAMPLES = ['우도에 렌터카 가져가도 되나', '새별오름에서 캠핑해도 되나', '해수욕장에서 불꽃놀이 해도 되나', '한라산 예약 없이 갈 수 있나', '낚시 금지 구역 과태료', '해루질 야간에 해도 되나'];
+  const KIND = { fact: '근거 있음', unknown: '확인 필요', measure: '제안', meta: '자료 상태' };
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, cls, text) => { const node = document.createElement(tag); if (cls) node.className = cls; if (text !== undefined) node.textContent = text; return node; };
+
+  $('date').value = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+  for (const sample of SAMPLES) {
+    const chip = el('button', '', sample);
+    chip.type = 'button';
+    chip.addEventListener('click', () => { $('question').value = sample; ask(); });
+    $('chips').append(chip);
+  }
+  $('form').addEventListener('submit', (event) => { event.preventDefault(); ask(); });
+
+  async function ask() {
+    const question = $('question').value.trim();
+    if (!question) return;
+    $('send').disabled = true;
+    $('status').textContent = '찾는 중…';
+    $('answer').replaceChildren();
+    $('foot').textContent = '';
+    try {
+      const response = await fetch('/v1/ask', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({ question, date: $('date').value || undefined }) });
+      const data = await response.json();
+      if (!response.ok) { $('status').textContent = '오류: ' + (data.message || data.error || response.status); return; }
+      show(data);
+    } catch (error) {
+      $('status').textContent = '서버에 닿지 못했다.';
+    } finally {
+      $('send').disabled = false;
+    }
+  }
+
+  function show(data) {
+    const how = data.mode === 'model' ? '모델 ' + data.model : '모델 없이(카드에서 뽑음)';
+    $('status').textContent = '기준일 ' + data.as_of + ' · ' + how + (data.fallback_reason ? ' · 모델을 쓰지 못한 이유: ' + data.fallback_reason : '')
+      + ' · 서술 ' + data.verification.kept + '개, 뺀 서술 ' + data.verification.blocked.length + '개';
+    const nodes = [];
+    for (const item of data.statements) {
+      const box = el('div', 'item ' + item.kind);
+      const line = el('div', 'text');
+      line.append(el('span', 'kind', KIND[item.kind] || item.kind), document.createTextNode(item.text));
+      box.append(line);
+      for (const basis of item.basis) {
+        if (!basis.quote) continue;
+        const quote = el('div', 'quote', '“' + basis.quote + '”');
+        quote.append(el('br'), el('small', '', [basis.card_id || basis.provision_id, basis.item_id, basis.locator].filter(Boolean).join(' · ')));
+        box.append(quote);
+      }
+      for (const warning of item.warnings || []) box.append(el('div', 'warn', '주의: ' + warning));
+      nodes.push(box);
+    }
+    for (const item of data.verification.blocked) {
+      const box = el('div', 'item blocked');
+      const line = el('div', 'text');
+      line.append(el('span', 'kind', '뺀 서술'), document.createTextNode(item.text));
+      box.append(line, el('div', 'warn', item.problems.join('; ')));
+      nodes.push(box);
+    }
+    $('answer').replaceChildren(...nodes);
+    $('foot').textContent = (data.cards.length ? '카드: ' + data.cards.map((card) => card.card_id + '(' + card.evidence_grade + ')').join(', ') + ' — ' : '') + data.disclaimer;
+  }
+</script>
+</body>
+</html>
